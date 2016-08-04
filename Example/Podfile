@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'KFXLog_Example' do
+  pod 'KFXLog', :path => '../'
+
+  target 'KFXLog_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
