@@ -235,75 +235,75 @@ You can take a look in KFXFormattedLogDescriptor.m to see the settings for each 
 
 ##### KFXLogFormatFir
 
-◎ <INFO>                    This is some info.; Sender: <AppDelegate: 0x7fb220d01eb0>;
-◎ <WARNING>                 This is a warning, warning, warning; Sender: <AppDelegate: 0x7fb220d01eb0>;
+    ◎ <INFO>                    This is some info.; Sender: <AppDelegate: 0x7fb220d01eb0>;
+    ◎ <WARNING>                 This is a warning, warning, warning; Sender: <AppDelegate: 0x7fb220d01eb0>;
 
 ##### KFXLogFormatAsh
 
-◎  [8/5/16, 4:49:59 PM] <INFO>          This is some info.; Sender: AppDelegate;
+    ◎  [8/5/16, 4:49:59 PM] <INFO>          This is some info.; Sender: AppDelegate;
 
-◎  [8/5/16, 5:08:33 PM] <WARNING>       This is a warning, warning, warning; Sender: AppDelegate;
+    ◎  [8/5/16, 5:08:33 PM] <WARNING>       This is a warning, warning, warning; Sender: AppDelegate;
 
 ##### KFXLogFormatWalnut
 
-<INFO> This is some info.;
-<WARNING> This is a warning, warning, warning;
+    <INFO> This is some info.;
+    <WARNING> This is a warning, warning, warning;
 
 ##### KFXLogFormatTeak
 
-<INFO> This is some info.; Sender: <AppDelegate: 0x7fde0be079a0>;
-<WARNING> This is a warning, warning, warning; Sender: <AppDelegate: 0x7fde0be079a0>;
+    <INFO> This is some info.; Sender: <AppDelegate: 0x7fde0be079a0>;
+    <WARNING> This is a warning, warning, warning; Sender: <AppDelegate: 0x7fde0be079a0>;
 
 ##### KFXLogFormatBalsa
 
-* [INFO]         This is some info.;
+    * [INFO]         This is some info.;
 
-* [WARNING]      This is a warning, warning, warning;
+    * [WARNING]      This is a warning, warning, warning;
 
 ##### KFXLogFormatMahogany
 
-• <INFO>--------- This is some info.; Sender: <AppDelegate: 0x7f990a508330>;
-• <WARNING>------ This is a warning, warning, warning; Sender: <AppDelegate: 0x7f990a508330>;
+    • <INFO>--------- This is some info.; Sender: <AppDelegate: 0x7f990a508330>;
+    • <WARNING>------ This is a warning, warning, warning; Sender: <AppDelegate: 0x7f990a508330>;
 
 ##### KFXLogFormatBirch
 
-★ [8/5/16, 5:10:44 PM] <INFO>~~~~~~~~~~~~~~~~~~~ This is some info.; Sender: AppDelegate; <AppDelegate: 0x7fddeaf0b840>;
+    ★ [8/5/16, 5:10:44 PM] <INFO>~~~~~~~~~~~~~~~~~~~ This is some info.; Sender: AppDelegate; <AppDelegate: 0x7fddeaf0b840>;
 
-★ [8/5/16, 5:10:44 PM] <WARNING>~~~~~~~~~~~~~~~~ This is a warning, warning, warning; Sender: AppDelegate; <AppDelegate: 0x7fddeaf0b840>;
+    ★ [8/5/16, 5:10:44 PM] <WARNING>~~~~~~~~~~~~~~~~ This is a warning, warning, warning; Sender: AppDelegate; <AppDelegate: 0x7fddeaf0b840>;
 
 
 ##### KFXLogFormatOak
 
-##  [8/5/16, 5:11:28 PM] _________________<*INFO*> Sender: <AppDelegate: 0x7fd9b8411a30>; This is some info.;
-##  [8/5/16, 5:11:28 PM] ______________<*WARNING*> Sender: <AppDelegate: 0x7fd9b8411a30>; This is a warning, warning, warning;
+    ##  [8/5/16, 5:11:28 PM] _________________<*INFO*> Sender: <AppDelegate: 0x7fd9b8411a30>; This is some info.;
+    ##  [8/5/16, 5:11:28 PM] ______________<*WARNING*> Sender: <AppDelegate: 0x7fd9b8411a30>; This is a warning, warning, warning;
 
 
 ##### KFXLogFormatPine
 
-[8/5/16, 5:12:08 PM] !INFO! This is some info.;
-[8/5/16, 5:12:08 PM] !WARNING! This is a warning, warning, warning;
+    [8/5/16, 5:12:08 PM] !INFO! This is some info.;
+    [8/5/16, 5:12:08 PM] !WARNING! This is a warning, warning, warning;
 
 ##### KFXLogFormatMaple
 
-(INFO)             This is some info.;
-(WARNING)          This is a warning, warning, warning;
+    (INFO)             This is some info.;
+    (WARNING)          This is a warning, warning, warning;
 
 ##### KFXLogFormatCherry
 
-(INFO) Sender: AppDelegate; This is some info.;
-(WARNING) Sender: AppDelegate; This is a warning, warning, warning;
+    (INFO) Sender: AppDelegate; This is some info.;
+    (WARNING) Sender: AppDelegate; This is a warning, warning, warning;
 
 ##### KFXLogFormatRedwood
 
-+ [8/5/16, 5:13:58 PM] [INFO]______________ Sender: <AppDelegate: 0x7fe5cae05b80>; This is some info.;
+    + [8/5/16, 5:13:58 PM] [INFO]______________ Sender: <AppDelegate: 0x7fe5cae05b80>; This is some info.;
 
-+ [8/5/16, 5:13:58 PM] [WARNING]___________ Sender: <AppDelegate: 0x7fe5cae05b80>; This is a warning, warning, warning;
+    + [8/5/16, 5:13:58 PM] [WARNING]___________ Sender: <AppDelegate: 0x7fe5cae05b80>; This is a warning, warning, warning;
 
 
 ##### KFXLogFormatHolly
 
-Δ [8/5/16, 5:14:27 PM]            [INFO] This is some info.; Sender: <AppDelegate: 0x7ffa93507340>;
-Δ [8/5/16, 5:14:27 PM]         [WARNING] This is a warning, warning, warning; Sender: <AppDelegate: 0x7ffa93507340>;
+    Δ [8/5/16, 5:14:27 PM]            [INFO] This is some info.; Sender: <AppDelegate: 0x7ffa93507340>;
+    Δ [8/5/16, 5:14:27 PM]         [WARNING] This is a warning, warning, warning; Sender: <AppDelegate: 0x7ffa93507340>;
 
 
 ## Author
