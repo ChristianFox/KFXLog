@@ -106,7 +106,7 @@ Before calling any of the KFXLog methods you should customise KFXLogConfigurator
 - KFXLoggerInterface
     - KFXServiceLoggerInterface (conform to & implement to be able to log to a service)
 
-#### Helpers (Probably useful if you are implementing a service logger)
+#### Helpers (Possibly useful if you are implementing a service logger)
 - KFXLogFormatter
 - KFXOptionsReader
 
