@@ -1,6 +1,6 @@
 # KFXLog
 
-[![CI Status](http://img.shields.io/travis/Christian Fox/KFXLog.svg?style=flat)](https://travis-ci.org/Christian Fox/KFXLog)
+
 [![Version](https://img.shields.io/cocoapods/v/KFXLog.svg?style=flat)](http://cocoapods.org/pods/KFXLog)
 [![License](https://img.shields.io/cocoapods/l/KFXLog.svg?style=flat)](http://cocoapods.org/pods/KFXLog)
 [![Platform](https://img.shields.io/cocoapods/p/KFXLog.svg?style=flat)](http://cocoapods.org/pods/KFXLog)
