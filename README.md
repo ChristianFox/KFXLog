@@ -22,9 +22,9 @@ Xcode 7
 KFXLog is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-```ruby
-pod "KFXLog"
-```
+    ```ruby
+    pod "KFXLog"
+    ```
 
 
 
@@ -32,59 +32,60 @@ pod "KFXLog"
 #### Configuration 
 Before calling any of the KFXLog methods you should customise KFXLogConfigurator.
 
-1. Get a reference to the KFXLogConfigurator singleton (do not initilise an instance directly).
+    1. Get a reference to the KFXLogConfigurator singleton (do not initilise an instance directly).
 
-```objective-c
-KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
-```
-2. Customise any global settings you want to change from the defaults
+        ```objective-c
+        KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+        ```
 
-```
-config.buildConfiguration = KFXBuildConfigurationDebug;
-config.consoleLogType = KFXConsoleLogTypeClean;
-config.debugLogOptions = KFXLogToConsole | KFXLogToFile | KFXLogToAlert;
-config.adHocLogOptions =  KFXLogToFile | KFXLogToAlert;
-config.releaseLogOptions = KFXLogToFile | KFXLogToService;
-config.shouldCatchUncaughtExceptions = NO;
-```
+    2. Customise any global settings you want to change from the defaults
 
-3. Customise the descriptors for specific logging mediums (Console, File, Alert, Service) that you need to
+        ```
+        config.buildConfiguration = KFXBuildConfigurationDebug;
+        config.consoleLogType = KFXConsoleLogTypeClean;
+        config.debugLogOptions = KFXLogToConsole | KFXLogToFile | KFXLogToAlert;
+        config.adHocLogOptions =  KFXLogToFile | KFXLogToAlert;
+        config.releaseLogOptions = KFXLogToFile | KFXLogToService;
+        config.shouldCatchUncaughtExceptions = NO;
+        ```
 
-```
-[config.cleanLogDescriptor configureWithLogFormat:KFXLogFormatFir];
-config.cleanLogDescriptor.leadingNewLines = 0;
-[config.fileLogDescriptor configureWithLogFormat:KFXLogFormatBirch];
-config.fileLogDescriptor.split = KFXFileLogsSplitByBuild;
-[config.alertLogDescriptor configureWithLogFormat:KFXLogFormatPine];
-config.alertLogDescriptor.whitelist = KFXLogTypeError | KFXLogTypeFail | KFXLogTypeWarning;
-[config.serviceLogDescriptor configureWithLogFormat:KFXLogFormatBalsa];
-```
+    3. Customise the descriptors for specific logging mediums (Console, File, Alert, Service) that you need to
 
-4. Create an instance of your service logger class if you are using one and set the serviceLogger property on the configurator
+        ```
+        [config.cleanLogDescriptor configureWithLogFormat:KFXLogFormatFir];
+        config.cleanLogDescriptor.leadingNewLines = 0;
+        [config.fileLogDescriptor configureWithLogFormat:KFXLogFormatBirch];
+        config.fileLogDescriptor.split = KFXFileLogsSplitByBuild;
+        [config.alertLogDescriptor configureWithLogFormat:KFXLogFormatPine];
+        config.alertLogDescriptor.whitelist = KFXLogTypeError | KFXLogTypeFail | KFXLogTypeWarning;
+        [config.serviceLogDescriptor configureWithLogFormat:KFXLogFormatBalsa];
+        ```
 
-```
-config.serviceLogger = [DEMOServiceLogger serviceLogger];
-```
+    4. Create an instance of your service logger class if you are using one and set the serviceLogger property on the configurator
 
-5. Print a settings summary if you want to
+        ```
+        config.serviceLogger = [DEMOServiceLogger serviceLogger];
+        ```
 
-```
-[config printSettings];
-```
+    5. Print a settings summary if you want to
+
+        ```
+        [config printSettings];
+        ```
 
 
 #### Logging
 
-1. Import ```<KFXLog/KFXLog.h> ```
-2. Log
+    1. Import ```<KFXLog/KFXLog.h> ```
+    2. Log
 
-```
-[KFXLog logInfo:@"This is some info." sender:nil];
-[KFXLog logWarning:@"This is a warning, warning, warning" sender:self];
-[KFXLog logError:error sender:self];
-[KFXLog logWithCustomPrefix:@"<MESSAGE!!!>" message:@"This is a message" sender:self];
-[KFXLog logSuccess:success withMessage:@"Log in successful?" sender:self];
-```
+        ```
+        [KFXLog logInfo:@"This is some info." sender:nil];
+        [KFXLog logWarning:@"This is a warning, warning, warning" sender:self];
+        [KFXLog logError:error sender:self];
+        [KFXLog logWithCustomPrefix:@"<MESSAGE!!!>" message:@"This is a message" sender:self];
+        [KFXLog logSuccess:success withMessage:@"Log in successful?" sender:self];
+        ```
 
 
 ## Architecture
@@ -94,16 +95,16 @@ config.serviceLogger = [DEMOServiceLogger serviceLogger];
 - KFXLogConfigurator
 - KFXLoggerDefinitions
 - KFXLogDescriptor
-- KFXBasicLogDescriptor
-- KFXFormattedLogDescriptor
-- KFXCleanLogDescriptor
-- KFXFileLogDescriptor
-- KFXAlertLogDescriptor
-- KFXServiceLogDescriptor
+    - KFXBasicLogDescriptor
+    - KFXFormattedLogDescriptor
+        - KFXCleanLogDescriptor
+        - KFXFileLogDescriptor
+        - KFXAlertLogDescriptor
+        - KFXServiceLogDescriptor
 
 #### Protocols
 - KFXLoggerInterface
-- KFXServiceLoggerInterface (conform to & implement to be able to log to a service)
+    - KFXServiceLoggerInterface (conform to & implement to be able to log to a service)
 
 #### Helpers (Probably useful if you are implementing a service logger)
 - KFXLogFormatter
@@ -112,15 +113,15 @@ config.serviceLogger = [DEMOServiceLogger serviceLogger];
 
 #### Internal
 - KFXLogger
-- KFXAlertLogger
-- KFXConsoleLogger
-- KFXFileLogger
+    - KFXAlertLogger
+    - KFXConsoleLogger
+    - KFXFileLogger
 
 
 ## Threads
 KFXLog's methods can be called from any thread quite safely provided you follow one simple rule:
 
-1. Make your customisations to KFXLogConfigurator before using any of the KFXLog methods.
+    1. Make your customisations to KFXLogConfigurator before using any of the KFXLog methods.
 
 It is recommended you don't change the configuration settings of KFXLogConfigurator once set. The properties are nonatomic and so not thread safe. If you only set the configuration settings before you start logging then you can call the methods of KFXLog from any thread without any issues as internally we only read from those properties. I considered making all the configuration properties atomic but the overhead seemed unnecessary because even if all the properties were thread safe it still makes more sense to keep the configuration settings the same for the lifetime of the application.
 
@@ -129,27 +130,27 @@ It is recommended you don't change the configuration settings of KFXLogConfigura
 
 #### Logging to Console
 
-1. Open AppDelegate.m
-2. Add: #import "KFXLogConfigurator.h"
-3. In -application: didFinishLaunchingWithOptions:
+    1. Open AppDelegate.m
+    2. Add: #import "KFXLogConfigurator.h"
+    3. In -application: didFinishLaunchingWithOptions:
 
-```objective-c
-KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
-config.buildConfiguration = KFXBuildConfigurationDebug;
-// Set to clean (print) or standard (NSLog)
-config.consoleLogType = KFXConsoleLogTypeClean; 
-config.debugLogMediums = KFXLogMediumConsole;
-// Set your log format style (look at KFXFormattedLogDescriptor to see the options)
-[config.cleanLogDescriptor configureWithLogFormat:KFXLogFormatFir];
+        ```objective-c
+        KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+        config.buildConfiguration = KFXBuildConfigurationDebug;
+        // Set to clean (print) or standard (NSLog)
+        config.consoleLogType = KFXConsoleLogTypeClean; 
+        config.debugLogMediums = KFXLogMediumConsole;
+        // Set your log format style (look at KFXFormattedLogDescriptor to see the options)
+        [config.cleanLogDescriptor configureWithLogFormat:KFXLogFormatFir];
 
-```
+        ```
 
-4. Then start logging.
+    4. Then start logging.
 
-```
-[KFXLog logConfiguredObject:config sender:self];
+        ```
+        [KFXLog logConfiguredObject:config sender:self];
 
-```
+        ```
 
 
 #### Logging to Files
@@ -158,21 +159,21 @@ config.debugLogMediums = KFXLogMediumConsole;
 2. Add: #import "KFXLogConfigurator.h"
 3. In -application: didFinishLaunchingWithOptions:
 
-```objective-c
-KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
-config.buildConfiguration = KFXBuildConfigurationDebug;
-config.debugLogMediums = KFXLogMediumFile;
-// Set your log format style (look at KFXFormattedLogDescriptor to see the options)
-[config.fileLogDescriptor configureWithLogFormat:KFXLogFormatOak];
+    ```objective-c
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    config.buildConfiguration = KFXBuildConfigurationDebug;
+    config.debugLogMediums = KFXLogMediumFile;
+    // Set your log format style (look at KFXFormattedLogDescriptor to see the options)
+    [config.fileLogDescriptor configureWithLogFormat:KFXLogFormatOak];
 
-```
+    ```
 
 4. Then start logging.
 
-```
-[KFXLog logConfiguredObject:config sender:self];
+    ```
+    [KFXLog logConfiguredObject:config sender:self];
 
-```
+    ```
 
 #### Logging to Alerts
 
@@ -180,21 +181,21 @@ config.debugLogMediums = KFXLogMediumFile;
 2. Add: #import "KFXLogConfigurator.h"
 3. In -application: didFinishLaunchingWithOptions:
 
-```objective-c
-KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
-config.buildConfiguration = KFXBuildConfigurationDebug;
-config.debugLogMediums = KFXLogMediumAlert;
-// Set your log format style (look at KFXFormattedLogDescriptor to see the options)
-[config.alertLogDescriptor configureWithLogFormat:KFXLogCherry];
+    ```objective-c
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    config.buildConfiguration = KFXBuildConfigurationDebug;
+    config.debugLogMediums = KFXLogMediumAlert;
+    // Set your log format style (look at KFXFormattedLogDescriptor to see the options)
+    [config.alertLogDescriptor configureWithLogFormat:KFXLogCherry];
 
-```
+    ```
 
 4. Then start logging.
 
-```
-[KFXLog logConfiguredObject:config sender:self];
+    ```
+    [KFXLog logConfiguredObject:config sender:self];
 
-```
+    ```
 
 #### Logging to a Service
 
@@ -205,30 +206,30 @@ config.debugLogMediums = KFXLogMediumAlert;
 4. Add: #import "KFXLogConfigurator.h" + Your service logger class
 5. In -application: didFinishLaunchingWithOptions:
 
-```objective-c
-KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
-config.buildConfiguration = KFXBuildConfigurationDebug;
-config.debugLogMediums = KFXLogMediumService;
-// Set your log format style (look at KFXFormattedLogDescriptor to see the options)
-[config.serviceLogDescriptor configureWithLogFormat:KFXLogMaple];
-// Set your class as the serviceLogger
-config.serviceLogger = [[DEMOServiceLogger alloc]init];
+    ```objective-c
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    config.buildConfiguration = KFXBuildConfigurationDebug;
+    config.debugLogMediums = KFXLogMediumService;
+    // Set your log format style (look at KFXFormattedLogDescriptor to see the options)
+    [config.serviceLogDescriptor configureWithLogFormat:KFXLogMaple];
+    // Set your class as the serviceLogger
+    config.serviceLogger = [[DEMOServiceLogger alloc]init];
 
-```
+    ```
 
 6. Then start logging.
 
-```
-[KFXLog logConfiguredObject:config sender:self];
+    ```
+    [KFXLog logConfiguredObject:config sender:self];
 
-```
+    ```
 
 
 ## Log Format Styles
 
 For the subclasses of KFXFormattedLogDescriptor there are many properties you can change. To simplify things a bit I've set up a bunch of styles which can you use with the Enum KFXLogFormat like so:
 
-[config.fileLogDescriptor configureWithLogFormat:KFXLogFormatBirch];
+    [config.fileLogDescriptor configureWithLogFormat:KFXLogFormatBirch];
 
 You can take a look in KFXFormattedLogDescriptor.m to see the settings for each style - I couldn't think of a more user friendly place to do it. I've including some samples of each style below. Find one that is close to what you want and then tweak the settings to your liking.
 
