@@ -43,9 +43,9 @@ Before calling any of the KFXLog methods you should customise KFXLogConfigurator
     ```objective-c
     config.buildConfiguration = KFXBuildConfigurationDebug;
     config.consoleLogType = KFXConsoleLogTypeClean;
-    config.debugLogOptions = KFXLogToConsole | KFXLogToFile | KFXLogToAlert;
-    config.adHocLogOptions =  KFXLogToFile | KFXLogToAlert;
-    config.releaseLogOptions = KFXLogToFile | KFXLogToService;
+    config.debugLogMediums = KFXLogMediumConsole | KFXLogMediumFile | KFXLogMediumAlert;
+    config.adHocLogMediums =  KFXLogMediumFile | KFXLogMediumAlert;
+    config.releaseLogMediums = KFXLogMediumFile | KFXLogMediumService;
     config.shouldCatchUncaughtExceptions = NO;
     ```
 
