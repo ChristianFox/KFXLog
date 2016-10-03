@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) KFXFileLogsSplit split;
 /// The log types to exclude from the file logs. Defaults to none.
 @property (nonatomic) KFXLogType blacklist;
-/// The directory path that the files are saved to. Defaults to documents directory.
+/// The directory path that the files are saved to. If not set will use the path returned from -defaultDirectoryPathForLogFiles.
 @property (strong,nonatomic) NSString *directoryPath;
 /// The base file name which then has a different suffix appended depending on the split property. Defaults to "Logs"
 @property (strong,nonatomic) NSString *fileNameBase;
@@ -44,6 +44,16 @@ NS_ASSUME_NONNULL_BEGIN
 //--------------------------------------------------------
 /// Returns a new KFXFileLogDescriptor instance with default properties set
 +(instancetype)fileLogDescriptor;
+
+//--------------------------------------------------------
+#pragma mark - Directory Path
+//--------------------------------------------------------
+/**
+ * @brief The directory where log files will be saved by default
+ * @discussion This method will attempt to create a new directory in the Application Support directory called "LogFiles", if that fails for any reason then it will fall back on using the documents directory.
+ * @return An NSString with the entire path to the default log files directory
+ **/
+-(NSString*)defaultDirectoryPathForLogFiles;
 
 @end
 NS_ASSUME_NONNULL_END

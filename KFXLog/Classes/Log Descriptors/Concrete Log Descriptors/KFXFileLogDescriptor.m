@@ -42,7 +42,7 @@
     [descriptor configureWithLogFormat:KFXLogFormatAsh];
     descriptor.split = KFXFileLogsSplitByBuild;
     descriptor.blacklist = KFXLogTypeNone;
-    descriptor.directoryPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    descriptor.directoryPath =  [descriptor defaultDirectoryPathForLogFiles];
     descriptor.fileNameBase = @"Logs";
     descriptor.dateFormatter = [[NSDateFormatter alloc]init];
     [descriptor.dateFormatter setDateStyle:NSDateFormatterShortStyle];
@@ -50,5 +50,24 @@
     return descriptor;
 }
 
+//--------------------------------------------------------
+#pragma mark - Directory Path
+//--------------------------------------------------------
+-(NSString*)defaultDirectoryPathForLogFiles{
+    
+    NSString *appSupportPath = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *logFilesPath = [appSupportPath stringByAppendingPathComponent:@"LogFiles"];
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    BOOL success = NO;
+    success = [fileMan createDirectoryAtPath:logFilesPath
+                 withIntermediateDirectories:YES
+                                  attributes:nil
+                                       error:nil];
+    if (success) {
+        return logFilesPath;
+    }else{
+        return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];;
+    }
+}
 
 @end

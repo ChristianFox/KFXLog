@@ -49,7 +49,7 @@
     
     // ### FileLogDescriptor ###
     [config.fileLogDescriptor configureWithLogFormat:KFXLogFormatBirch];
-    config.fileLogDescriptor.directoryPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+//    config.fileLogDescriptor.directoryPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     config.fileLogDescriptor.fileNameBase = @"Logs";
     config.fileLogDescriptor.split = KFXFileLogsSplitByBuild;
     config.fileLogDescriptor.showDate = YES;
