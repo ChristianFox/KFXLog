@@ -54,20 +54,117 @@ static dispatch_queue_t logQueue;
 //--------------------------------------------------------
 #pragma mark - Standard Logs
 //--------------------------------------------------------
-+(void)logInfo:(NSString*)message sender:(id)sender{
++(void)logInfo:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    [self logToSelector:@selector(logInfo:sender:) withObject:message sender:nil];
+}
+
++(void)logInfoWithSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    [self logToSelector:@selector(logInfo:sender:) withObject:message sender:sender];
+}
+
++(void)logInfo:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
     [self logToSelector:@selector(logInfo:sender:) withObject:message sender:sender];
     
 }
 
-+(void)logWarning:(NSString *)message sender:(id)sender{
+#pragma mark WARNING
++(void)logWarning:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    [self logToSelector:@selector(logWarning:sender:) withObject:message sender:nil];
+}
+
++(void)logWarningWithSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
     [self logToSelector:@selector(logWarning:sender:) withObject:message sender:sender];
 }
 
-+(void)logFail:(NSString *)message sender:(id)sender{
++(void)logWarning:(NSString *)message sender:(id)sender DEPRECATED_ATTRIBUTE{
+    [self logToSelector:@selector(logWarning:sender:) withObject:message sender:sender];
+}
+
+#pragma mark FAIL
++(void)logFail:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    [self logToSelector:@selector(logFail:sender:) withObject:message sender:nil];
+}
+
++(void)logFailWithSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
     [self logToSelector:@selector(logFail:sender:) withObject:message sender:sender];
 }
 
-+(void)logWithCustomPrefix:(NSString *)prefix message:(NSString *)message sender:(id)sender{
++(void)logFail:(NSString *)message sender:(id)sender DEPRECATED_ATTRIBUTE{
+    [self logToSelector:@selector(logFail:sender:) withObject:message sender:sender];
+}
+
+
+#pragma mark Custom Prefix
++(void)logWithCustomPrefix:(NSString *)prefix format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    dispatch_async(logQueue, ^{
+        // TODO: Test this method can handle nil sender without crashing
+        [self performLogSelector:@selector(logWithCustomPrefix:message:sender:),prefix,message,nil];
+    });
+}
+
++(void)logWithCustomPrefix:(NSString *)prefix sender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    dispatch_async(logQueue, ^{
+        [self performLogSelector:@selector(logWithCustomPrefix:message:sender:),prefix,message,sender];
+    });
+}
+
++(void)logWithCustomPrefix:(NSString *)prefix message:(NSString *)message sender:(id)sender DEPRECATED_ATTRIBUTE{
     dispatch_async(logQueue, ^{
         [self performLogSelector:@selector(logWithCustomPrefix:message:sender:),prefix,message,sender];
     });
@@ -119,6 +216,16 @@ static dispatch_queue_t logQueue;
 //--------------------------------------------------------
 #pragma mark - UI Logs
 //--------------------------------------------------------
++(void)logUIEventWithSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    [self logToSelector:@selector(logUIEvent:sender:) withObject:message sender:sender];
+}
 +(void)logUIEvent:(NSString*)message sender:(id)sender{
     [self logToSelector:@selector(logUIEvent:sender:) withObject:message sender:sender];
 }
@@ -178,9 +285,35 @@ static dispatch_queue_t logQueue;
 //--------------------------------------------------------
 #pragma mark - Progress & Success
 //--------------------------------------------------------
++(void)logProgress:(double)progress withSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    dispatch_async(logQueue, ^{
+        [self performLogSelector:@selector(logProgress:withMessage:sender:),@(progress),message,sender];
+    });
+}
+
 +(void)logProgress:(double)progress withMessage:(NSString*)message sender:(id)sender{
     dispatch_async(logQueue, ^{
         [self performLogSelector:@selector(logProgress:withMessage:sender:),@(progress),message,sender];
+    });
+}
+
++(void)logSuccess:(BOOL)success withSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    dispatch_async(logQueue, ^{
+        [self performLogSelector:@selector(logSuccess:withMessage:sender:),@(success),message,sender];
     });
 }
 
@@ -188,6 +321,19 @@ static dispatch_queue_t logQueue;
     dispatch_async(logQueue, ^{
         [self performLogSelector:@selector(logSuccess:withMessage:sender:),@(success),message,sender];
     });    
+}
+
++(void)logValidity:(BOOL)isValid ofObject:(id)object sender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    dispatch_async(logQueue, ^{
+        [self performLogSelector:@selector(logValidity:ofObject:sender:),@(isValid),object,sender];
+    });
 }
 
 +(void)logValidity:(BOOL)isValid ofObject:(id)object sender:(id)sender{
@@ -215,15 +361,54 @@ static dispatch_queue_t logQueue;
 //--------------------------------------------------------
 #pragma mark - Threads, Queues, Operations
 //--------------------------------------------------------
++(void)logThread:(NSThread *)thread withSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    dispatch_async(logQueue, ^{
+        [self performLogSelector:@selector(logThread:withMessage:sender:),thread,message,sender];
+    });
+}
+
 +(void)logThread:(NSThread*)thread withMessage:(NSString*)message sender:(id)sender{
     dispatch_async(logQueue, ^{
         [self performLogSelector:@selector(logThread:withMessage:sender:),thread,message,sender];
     });
 }
 
++(void)logQueue:(NSString *)queueName withSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    dispatch_async(logQueue, ^{
+        [self performLogSelector:@selector(logQueue:withMessage:sender:),queueName,message,sender];
+    });
+}
+
 +(void)logQueue:(NSString*)queueName withMessage:(NSString*)message sender:(id)sender{
     dispatch_async(logQueue, ^{
         [self performLogSelector:@selector(logQueue:withMessage:sender:),queueName,message,sender];
+    });
+}
+
++(void)logOperation:(NSOperation *)operation withSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    dispatch_async(logQueue, ^{
+        [self performLogSelector:@selector(logOperation:withMessage:sender:),operation,message,sender];
     });
 }
 

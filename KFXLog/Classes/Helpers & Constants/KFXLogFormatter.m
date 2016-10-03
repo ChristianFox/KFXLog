@@ -309,44 +309,46 @@
     if (bulletPoint != nil) {
         [fullMessage appendString:bulletPoint];
     }
+    
+    NSString *finalPrefix = (prefix != nil) ? prefix : @"";
 
     // ### Add indent & Prefix & Date
     switch (descriptor.order) {
             
         case KFXLogOrderDatePrefixIndent: {
             [fullMessage appendString:date];
-            [fullMessage appendString:prefix];
+            [fullMessage appendString:finalPrefix];
             [fullMessage appendString:indent];
             break;
         }
         case KFXLogOrderDateIndentPrefix: {
             [fullMessage appendString:date];
             [fullMessage appendString:indent];
-            [fullMessage appendString:prefix];
+            [fullMessage appendString:finalPrefix];
             break;
         }
         case KFXLogOrderPrefixDateIndent: {
-            [fullMessage appendString:prefix];
+            [fullMessage appendString:finalPrefix];
             [fullMessage appendString:date];
             [fullMessage appendString:indent];
             break;
         }
         case KFXLogOrderPrefixIndentDate: {
-            [fullMessage appendString:prefix];
+            [fullMessage appendString:finalPrefix];
             [fullMessage appendString:indent];
             [fullMessage appendString:date];
             break;
         }
         case KFXLogOrderIndentPrefixDate: {
             [fullMessage appendString:indent];
-            [fullMessage appendString:prefix];
+            [fullMessage appendString:finalPrefix];
             [fullMessage appendString:date];
             break;
         }
         case KFXLogOrderIndentDatePrefix: {
             [fullMessage appendString:indent];
             [fullMessage appendString:date];
-            [fullMessage appendString:prefix];
+            [fullMessage appendString:finalPrefix];
             break;
         }
     }
