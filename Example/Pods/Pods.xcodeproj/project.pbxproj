@@ -45,6 +45,10 @@
 		CA6A1295FC637731A7953C3D677B253E /* KFXServiceLoggerInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 69466D3E4780B6D1893B200CA882D076 /* KFXServiceLoggerInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD08349D95F51E084BE262B94143884A /* KFXLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F6B4E8BF77E5FBF43964DEC6F8758FE8 /* KFXLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6B63AC0CF9FD83B73DA9ED12C431D99 /* KFXConsoleLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = E5E2DE4A323EA1E08BE74C349B5AE871 /* KFXConsoleLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBB6EE4B1DA26E4200221AA9 /* KFXLogFileDetailVC.h in Headers */ = {isa = PBXBuildFile; fileRef = DBB6EE471DA26E4200221AA9 /* KFXLogFileDetailVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBB6EE4C1DA26E4200221AA9 /* KFXLogFileDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB6EE481DA26E4200221AA9 /* KFXLogFileDetailVC.m */; };
+		DBB6EE4D1DA26E4200221AA9 /* KFXLogFilesMasterTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = DBB6EE491DA26E4200221AA9 /* KFXLogFilesMasterTVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBB6EE4E1DA26E4200221AA9 /* KFXLogFilesMasterTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB6EE4A1DA26E4200221AA9 /* KFXLogFilesMasterTVC.m */; };
 		DD3BDEF87ED8A0ECDB6C0D70B5391AE9 /* KFXFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 834B1B5505FDAACDB98A05DFBAAECCD4 /* KFXFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2A9C7047975D13BBE2C1CA9EF1B82B9 /* KFXLoggerDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 51CA715307A6D2B1F8AC63AD06E78618 /* KFXLoggerDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E72A9A936027875C09197EBE1D49436A /* KFXServiceLogDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CF180059390FF0F5F3F746F7FE0187 /* KFXServiceLogDescriptor.m */; };
@@ -121,6 +125,10 @@
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D6AAFC6DB1FA14C28769A54864F4797E /* Pods-KFXLog_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KFXLog_Example-frameworks.sh"; sourceTree = "<group>"; };
 		DA6DD24342EB94D34C5D87B965ED0474 /* Pods-KFXLog_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KFXLog_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		DBB6EE471DA26E4200221AA9 /* KFXLogFileDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFXLogFileDetailVC.h; sourceTree = "<group>"; };
+		DBB6EE481DA26E4200221AA9 /* KFXLogFileDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFXLogFileDetailVC.m; sourceTree = "<group>"; };
+		DBB6EE491DA26E4200221AA9 /* KFXLogFilesMasterTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFXLogFilesMasterTVC.h; sourceTree = "<group>"; };
+		DBB6EE4A1DA26E4200221AA9 /* KFXLogFilesMasterTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFXLogFilesMasterTVC.m; sourceTree = "<group>"; };
 		DC984B92A2EAF5A73C93AFC6C3C3AA7D /* KFXLogDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXLogDescriptor.m; sourceTree = "<group>"; };
 		DE465E2299C9E971087082368633F1DE /* KFXFileLogDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXFileLogDescriptor.m; sourceTree = "<group>"; };
 		E5E2DE4A323EA1E08BE74C349B5AE871 /* KFXConsoleLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXConsoleLogger.h; sourceTree = "<group>"; };
@@ -178,6 +186,7 @@
 				5A19E62C030AE549DA6A96D626E3A430 /* Log Descriptors */,
 				31D63D4B139E0BAC1FA175414FB8E0A9 /* Loggers */,
 				87DB112E09F8E4376DCBF43B7C04991D /* Main */,
+				DBB6EE461DA26E4200221AA9 /* View Controllers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -412,6 +421,17 @@
 			path = KFXLogConfigurator;
 			sourceTree = "<group>";
 		};
+		DBB6EE461DA26E4200221AA9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DBB6EE471DA26E4200221AA9 /* KFXLogFileDetailVC.h */,
+				DBB6EE481DA26E4200221AA9 /* KFXLogFileDetailVC.m */,
+				DBB6EE491DA26E4200221AA9 /* KFXLogFilesMasterTVC.h */,
+				DBB6EE4A1DA26E4200221AA9 /* KFXLogFilesMasterTVC.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -438,6 +458,7 @@
 				EDBEEA1B0450B74531342A467F184AE9 /* KFXAlertLogDescriptor.h in Headers */,
 				436A6B4F2A4BE89FA40E3130E971737A /* KFXAlertLogger.h in Headers */,
 				F5D07DC4C225A79C681FDA5046E62230 /* KFXBasicLogDescriptor.h in Headers */,
+				DBB6EE4B1DA26E4200221AA9 /* KFXLogFileDetailVC.h in Headers */,
 				654EA577E3D8CB132BA8EE86A92286CA /* KFXCleanLogDescriptor.h in Headers */,
 				D6B63AC0CF9FD83B73DA9ED12C431D99 /* KFXConsoleLogger.h in Headers */,
 				505813A41586B195976C82B2CD3691D2 /* KFXFileLogDescriptor.h in Headers */,
@@ -456,6 +477,7 @@
 				0245E98A1F8B1B292E2BE45DC63D0AD7 /* KFXOptionsReader.h in Headers */,
 				56821F72FD13303BBDBA811A011F8C49 /* KFXServiceLogDescriptor.h in Headers */,
 				CA6A1295FC637731A7953C3D677B253E /* KFXServiceLoggerInterface.h in Headers */,
+				DBB6EE4D1DA26E4200221AA9 /* KFXLogFilesMasterTVC.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,9 +579,11 @@
 				036F6D46C033FC8F80E6DA266066A8D5 /* KFXFormattedLogDescriptor.m in Sources */,
 				3F959A1496617BF03C41E039A543D4CD /* KFXLog-dummy.m in Sources */,
 				55203EDD98E8544877D97052CF401194 /* KFXLog.m in Sources */,
+				DBB6EE4E1DA26E4200221AA9 /* KFXLogFilesMasterTVC.m in Sources */,
 				897038EA65AFFB5D4DBF9CEFF73CD072 /* KFXLogConfigurator.m in Sources */,
 				97409F5872DEFC0C66E513CF85ECE3C1 /* KFXLogDescriptor.m in Sources */,
 				72D379B2ECB95F87B35D01C3C708196C /* KFXLogFormatter.m in Sources */,
+				DBB6EE4C1DA26E4200221AA9 /* KFXLogFileDetailVC.m in Sources */,
 				78944EEB53D4005A1E4E5E7E13A7602E /* KFXLogger.m in Sources */,
 				70D06A89BDBCC820D9DEA8773372153D /* KFXOptionsReader.m in Sources */,
 				E72A9A936027875C09197EBE1D49436A /* KFXServiceLogDescriptor.m in Sources */,
