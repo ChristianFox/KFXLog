@@ -10,4 +10,11 @@
 
 @interface KFXLogFileTVCell : UITableViewCell
 
+@property (strong, nonatomic) UILabel *fileNameLabel;
+@property (strong, nonatomic) UILabel *creationDateLabel;
+@property (strong, nonatomic) UILabel *modificationDateLabel;
+
+
+
+
 @end

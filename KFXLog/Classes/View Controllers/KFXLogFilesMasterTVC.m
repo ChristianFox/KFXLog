@@ -8,6 +8,8 @@
 #import <KFXLog/KFXFileLogDescriptor.h>
 // VCs
 #import "KFXLogFileDetailVC.h"
+// Cells
+#import "KFXLogFileTVCell.h"
 
 @interface KFXLogFilesMasterTVC ()
 @property (strong,nonatomic) NSArray *tableData;
@@ -71,9 +73,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LogFileNameCell" forIndexPath:indexPath];
+    KFXLogFileTVCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LogFileNameCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = self.tableData[indexPath.row];
+    // Work out file path of log file
+    KFXFileLogDescriptor *fileLogDescriptor = [KFXLogConfigurator sharedConfigurator].fileLogDescriptor;
+    NSString *fileName = self.tableData[indexPath.row];
+    NSString *filePath = [fileLogDescriptor.directoryPath stringByAppendingPathComponent:fileName];
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    if ([fileMan fileExistsAtPath:filePath]) {
+        NSDictionary *attributes = [fileMan attributesOfItemAtPath:filePath error:nil];
+        NSDate *creationDate = attributes[NSFileCreationDate];
+        NSDate *modificationDate = attributes[NSFileModificationDate];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        [formatter setTimeStyle:NSDateFormatterMediumStyle];
+        
+        cell.fileNameLabel.text = fileName;
+        cell.creationDateLabel.text = [NSString stringWithFormat:@"Created: %@",[formatter stringFromDate:creationDate]];
+        cell.modificationDateLabel.text = [NSString stringWithFormat:@"Modified: %@",[formatter stringFromDate:modificationDate]];
+    }
     
     return cell;
 }
@@ -94,6 +113,7 @@
     [dest injectLogFilePath:filePath];
     
     [self.navigationController showViewController:dest sender:self];
+    
 
 }
 
@@ -109,11 +129,12 @@
 -(void)configureTableView{
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 70.0f;
+    self.tableView.estimatedRowHeight = 100.0f;
     
-    [self.tableView registerClass:[UITableViewCell class]
+    [self.tableView registerClass:[KFXLogFileTVCell class]
            forCellReuseIdentifier:@"LogFileNameCell"];
 }
+
 
 
 //--------------------------------------------------------
