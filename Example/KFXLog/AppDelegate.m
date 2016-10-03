@@ -73,6 +73,7 @@
     
     
     // # Test Logs #
+    // NB. I do know how to do unit tests but as the verification will be done by looking at the console it makes more sense to do tests here
     [self testLogInfo];
     [self testLogWarning];
     [self testLogFail];
@@ -120,15 +121,31 @@
 
 
 -(void)testLogInfo{
-    [KFXLog logInfo:@"This is some info." sender:self];
+  //  [KFXLog logInfo:@"This is some info." sender:self]; // deprecated
+    [KFXLog logInfo:nil];
+    [KFXLog logInfo:@"This is some info with a number: %@",@665];
+    [KFXLog logInfoWithSender:nil format:nil];
+    [KFXLog logInfoWithSender:self format:nil];
+    [KFXLog logInfoWithSender:nil format:@"This is some info with a number: %@",@665];
 }
 
 -(void)testLogWarning{
-    [KFXLog logWarning:@"This is a warning, warning, warning" sender:self];
+  //  [KFXLog logWarning:@"This is a warning, warning, warning" sender:self];  // deprecated
+    [KFXLog logWarning:nil];
+    [KFXLog logWarning:@"This is a warning, warning, %@",@"warning"];
+    [KFXLog logWarningWithSender:nil format:nil];
+    [KFXLog logWarningWithSender:nil format:@"This is a warning, warning, %@",@"warning"];
+    [KFXLog logWarningWithSender:self format:@"This is a warning, warning, %@",@"warning"];
+    
 }
 
 -(void)testLogFail{
-    [KFXLog logFail:@"Something has failed." sender:self];
+ //   [KFXLog logFail:@"Something has failed." sender:self];  // deprecated
+    [KFXLog logFail:nil];
+    [KFXLog logFail:@"Reporting a failure makes me %@",@":]"];
+    [KFXLog logFailWithSender:nil format:nil];
+    [KFXLog logFailWithSender:nil format:@"Not reporting a failure makes me %@",@"a sad panda"];
+    [KFXLog logFailWithSender:self format:@"Failure is just %@ that hasn't happened yet", @"success"];
 }
 
 -(void)testLogError{
@@ -159,7 +176,11 @@
 }
 
 -(void)testLogUIEvent{
-    [KFXLog logUIEvent:@"Some button tapped or gesture recognised" sender:self];
+ //   [KFXLog logUIEvent:@"Some button tapped or gesture recognised" sender:self];  // deprecated
+    [KFXLog logUIEventWithSender:nil format:nil];
+    [KFXLog logUIEventWithSender:nil format:@"The user touched a button or something %@",@"#ftw"];
+    [KFXLog logUIEventWithSender:self format:@"Did recognise gesture or something %@",@"#awesomeness"];
+    
 }
 
 -(void)testLogNotificationPosted{
@@ -197,7 +218,16 @@
 
 -(void)testLogWithCustomPrefix{
     
-    [KFXLog logWithCustomPrefix:@"<BALLS!>" message:@"This is a message" sender:self];
+  //  [KFXLog logWithCustomPrefix:@"<BALLS!>" message:@"This is a message" sender:self];  // deprecated
+    [KFXLog logWithCustomPrefix:nil format:nil];
+    [KFXLog logWithCustomPrefix:@"Le grand prefix" format:nil];
+    [KFXLog logWithCustomPrefix:@"nil" format:@"Lolz%@",@"!!!"];
+    [KFXLog logWithCustomPrefix:nil sender:nil format:nil];
+    [KFXLog logWithCustomPrefix:@"-> HERE" sender:nil format:nil];
+    [KFXLog logWithCustomPrefix:nil sender:self format:nil];
+    [KFXLog logWithCustomPrefix:nil sender:nil format:@"Some message about %@",@"something"];
+    [KFXLog logWithCustomPrefix:@"FULL" sender:self format:@"Some message about %@",@"something"];
+
 }
 
 -(void)testLogArrayWithCountAndClassesAndNesting{
@@ -278,15 +308,29 @@
 }
 
 -(void)testLogProgress{
-    [KFXLog logProgress:0.99 withMessage:@"Downloading images" sender:self];
+   // [KFXLog logProgress:0.99 withMessage:@"Downloading images" sender:self];  // deprecated
+    [KFXLog logProgress:0.001 withSender:nil format:nil];
+    [KFXLog logProgress:0.1111 withSender:nil format:@"Just started, %@",@"errrr..."];
+    [KFXLog logProgress:0.5002 withSender:self format:nil];
+    [KFXLog logProgress:1.000000 withSender:self format:@"All done, complete, finito, the end, %@",@"fin"];
 }
 
 -(void)testLogSuccess{
-    [KFXLog logSuccess:YES withMessage:@"Log in successful?" sender:self];
+  //  [KFXLog logSuccess:YES withMessage:@"Log in successful?" sender:self];  // deprecated
+    [KFXLog logSuccess:NO withSender:nil format:nil];
+    [KFXLog logSuccess:YES withSender:nil format:@"Attempted to do %@",@"xyz"];
+    [KFXLog logSuccess:NO withSender:self format:nil];
+    [KFXLog logSuccess:YES withSender:self format:@"Save to disk"];
 }
 
 -(void)testLogValidity{
-    [KFXLog logValidity:NO ofObject:self sender:self];
+ //   [KFXLog logValidity:NO ofObject:self sender:self]; // deprecated
+    [KFXLog logValidity:NO ofObject:nil sender:nil format:nil];
+    [KFXLog logValidity:(self != nil)  ofObject:self sender:nil format:nil];
+    [KFXLog logValidity:NO ofObject:nil sender:self format:nil];
+    [KFXLog logValidity:NO ofObject:nil sender:nil format:@"Is %@ valid?",@"nil"];
+    [KFXLog logValidity:(self != nil) ofObject:self sender:self format:@"Am @% valid?",@"I"];
+    
 }
 
 -(void)testLogBlockStart{
@@ -299,11 +343,24 @@
 
 -(void)testLogThread{
     NSThread *thread = [NSThread mainThread];
-    [KFXLog logThread:thread withMessage:@"Thread is on the go" sender:self];
+  // [KFXLog logThread:thread withMessage:@"Thread is on the go" sender:self]; // deprecated
+    [KFXLog logThread:nil withSender:nil format:nil];
+    [KFXLog logThread:thread withSender:nil format:nil];
+    [KFXLog logThread:nil withSender:self format:nil];
+    [KFXLog logThread:nil withSender:nil format:@"This thread is great!!!  %@",@"..."];
+    [KFXLog logThread:thread withSender:self format:@"This thread is called %@",@"Fred"];
+    
 }
 
 -(void)testLogQueue{
-    [KFXLog logQueue:@"com.kfx.logger.someQueue" withMessage:@"Queue is up and running" sender:self];
+ //   [KFXLog logQueue:@"com.kfx.logger.someQueue" withMessage:@"Queue is up and running" sender:self]; // deprecated
+    [KFXLog logQueue:nil withSender:nil format:nil];
+    [KFXLog logQueue:@"com.kfx.logger.someQueue" withSender:nil format:nil];
+    [KFXLog logQueue:nil withSender:self format:nil];
+    [KFXLog logQueue:nil withSender:nil format:@"QQQQ%@QQQ",@"Q"];
+    [KFXLog logQueue:@"com.kfx.logger.someQueue" withSender:self format:@"%@82QB4%@P",@"I",@"I"];
+
+    
 }
 
 -(void)testLogOperation{
@@ -311,7 +368,12 @@
     NSInvocation *inv = [NSInvocation invocationWithMethodSignature:sig];
     NSInvocationOperation *operation = [[NSInvocationOperation alloc]initWithInvocation:inv];
     operation.name = @"MrOperation";
-    [KFXLog logOperation:operation withMessage:@"Operation with invocation" sender:self];
+ //   [KFXLog logOperation:operation withMessage:@"Operation with invocation" sender:self]; // deprecated
+    [KFXLog logOperation:nil withSender:nil format:nil];
+    [KFXLog logOperation:operation withSender:nil format:nil];
+    [KFXLog logOperation:nil withSender:self format:nil];
+    [KFXLog logOperation:nil withSender:nil format:@"The operation was a %@ Mrs Smith",@"failure"];
+    [KFXLog logOperation:operation withSender:self format:@"The operation was a %@ Mrs Smith",@"success"];
 }
 
 -(void)testLogSendToURL{

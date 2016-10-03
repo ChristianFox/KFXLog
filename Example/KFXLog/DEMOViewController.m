@@ -30,7 +30,8 @@
     [super viewDidAppear:animated];
     
     // logs that will appear as alerts if the KFXLogToAlert bit is set for current build configuration
-    [KFXLog logWarning:@"This is a warning, warning, warning" sender:self];
+//    [KFXLog logWarning:@"This is a warning, warning, warning" sender:self];
+    [KFXLog logWarningWithSender:self format:@"This is a warning, warning, %@",@"warning"];
     //    [KFXLog logInfo:@"This is for an alert" sender:self];
     //    [KFXLog logWillDeallocateObject:self];
 //    NSError *error = [NSError errorWithDomain:@"com.company.app.other"
