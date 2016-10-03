@@ -143,7 +143,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
             [formatter setDateFormat:@"yyyy-MM-dd"];
             NSString *dateString = [formatter stringFromDate:[NSDate date]];
-            fullPath = [[basePath stringByAppendingString:@"_Dy_"]stringByAppendingString:dateString];
+            fullPath = [[basePath stringByAppendingString:@"_Day_"]stringByAppendingString:dateString];
             break;
         }
         case KFXFileLogsSplitByWeek: {
@@ -151,7 +151,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
             [formatter setDateFormat:@"yyyy-ww"];
             NSString *dateString = [formatter stringFromDate:[NSDate date]];
-            fullPath = [[basePath stringByAppendingString:@"_Wk_"]stringByAppendingString:dateString];
+            fullPath = [[basePath stringByAppendingString:@"_Week_"]stringByAppendingString:dateString];
             break;
         }
         case KFXFileLogsSplitByMonth: {
@@ -159,7 +159,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
             [formatter setDateFormat:@"yyyy-MM"];
             NSString *dateString = [formatter stringFromDate:[NSDate date]];
-            fullPath = [[basePath stringByAppendingString:@"_Mo_"]stringByAppendingString:dateString];
+            fullPath = [[basePath stringByAppendingString:@"_Month_"]stringByAppendingString:dateString];
             break;
         }
         case KFXFileLogsSplitByVersion: {
@@ -173,7 +173,7 @@
             
             NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
             NSString *minorVersion = infoDictionary[@"CFBundleVersion"];
-            fullPath = [[basePath stringByAppendingString:@"_Bld_"]stringByAppendingString:minorVersion];
+            fullPath = [[basePath stringByAppendingString:@"_Build_"]stringByAppendingString:minorVersion];
             break;
         }
     }
