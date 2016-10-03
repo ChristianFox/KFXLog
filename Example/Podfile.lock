@@ -1,5 +1,5 @@
 PODS:
-  - KFXLog (1.0.0.1)
+  - KFXLog (1.0.0.3)
 
 DEPENDENCIES:
   - KFXLog (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  KFXLog: 03ab3e5aeab89bd636da27a76bb858c7a4cec6eb
+  KFXLog: 9ec3f311bed98fc26ca0d8f79a8c6bff9cb0fa22
 
 PODFILE CHECKSUM: aed48d12221c4cba0cf3766b4c1ad8ddd3d9536c
 
