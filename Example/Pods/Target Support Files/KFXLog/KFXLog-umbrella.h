@@ -20,6 +20,8 @@
 #import "KFXLog.h"
 #import "KFXLogConfigurator.h"
 #import "KFXLogConfigurator_Internal.h"
+#import "KFXLogFileDetailVC.h"
+#import "KFXLogFilesMasterTVC.h"
 
 FOUNDATION_EXPORT double KFXLogVersionNumber;
 FOUNDATION_EXPORT const unsigned char KFXLogVersionString[];

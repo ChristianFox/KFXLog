@@ -2,7 +2,8 @@
 
 
 #import "DEMOViewController.h"
-#import "KFXLog.h"
+#import <KFXLog/KFXLog.h>
+#import <KFXLog/KFXLogFilesMasterTVC.h>
 
 @interface DEMOViewController ()
 
@@ -31,7 +32,7 @@
     
     // logs that will appear as alerts if the KFXLogToAlert bit is set for current build configuration
 //    [KFXLog logWarning:@"This is a warning, warning, warning" sender:self];
-    [KFXLog logWarningWithSender:self format:@"This is a warning, warning, %@",@"warning"];
+//    [KFXLog logWarningWithSender:self format:@"This is a warning, warning, %@",@"warning"];
     //    [KFXLog logInfo:@"This is for an alert" sender:self];
     //    [KFXLog logWillDeallocateObject:self];
 //    NSError *error = [NSError errorWithDomain:@"com.company.app.other"
@@ -49,7 +50,17 @@
 //--------------------------------------------------------
 #pragma mark - Actions
 //--------------------------------------------------------
+-(IBAction)viewLogFilesButtonTapped:(id)sender{
+    
+    KFXLogFilesMasterTVC *logFilesTVC = [[KFXLogFilesMasterTVC alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:logFilesTVC];
+    logFilesTVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Dismiss" style:UIBarButtonItemStylePlain target:self action:@selector(dismissButtonTapped:)];
+    [self showViewController:nav sender:self];
+}
 
+-(void)dismissButtonTapped:(id)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
