@@ -205,13 +205,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "KFXLog_Example" */;
 			buildPhases = (
+				DBEFA2581DA238770063EAE9 /* Run Script - Increment Build No. */,
 				1B3D4D6893D6332B0D6F36C5 /* 📦 Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				ED241B867D627395CA4A9BA3 /* 📦 Embed Pods Frameworks */,
 				23153BCB0ADB0FB97AA30690 /* 📦 Copy Pods Resources */,
-				DBEFA2581DA238770063EAE9 /* Run Script - Increment Build No. */,
 			);
 			buildRules = (
 			);
