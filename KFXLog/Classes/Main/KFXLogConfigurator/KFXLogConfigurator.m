@@ -88,6 +88,17 @@
     NSLog(@"%@%@%@%@\n\n",bigLine,header,message,bigLine);
 }
 
+//--------------------------------------------------------
+#pragma mark - Public Accessors
+//--------------------------------------------------------
+-(BOOL)shouldCatchUncaughtExceptions{
+    return self.shouldLogUncaughtExceptions;
+}
+-(void)setShouldCatchUncaughtExceptions:(BOOL)shouldCatchUncaughtExceptions{
+    self.shouldLogUncaughtExceptions = shouldCatchUncaughtExceptions;
+}
+
+
 
 
 //======================================================

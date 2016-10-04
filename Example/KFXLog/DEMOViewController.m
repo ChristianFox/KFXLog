@@ -123,8 +123,9 @@
 
 - (IBAction)logUncaughtExceptionButtonTapped:(id)sender {
     
-    if ([KFXLogConfigurator sharedConfigurator].shouldCatchUncaughtExceptions) {
+    if ([KFXLogConfigurator sharedConfigurator].shouldLogUncaughtExceptions) {
         
+        [KFXLog logInfo:@"Will log something before logging the exception because the logger needs to be created (they are all lazily created) before an exception can be handled."];
         [self.logExamples logUncaughtException];
 
     }else{

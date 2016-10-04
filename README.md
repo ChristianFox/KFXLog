@@ -6,16 +6,16 @@
 [![Platform](https://img.shields.io/cocoapods/p/KFXLog.svg?style=flat)](http://cocoapods.org/pods/KFXLog)
 
 ## Example
-To run the example project, clone the repo, run the app and watch the console for various log messages, you will also see an alert pop up in the app.
+To run the example project, clone the repo, run the app and push some buttons.
 
-All the configuration is set in the AppDelegate also all console log messages are called from the AppDelegate, you can play around with the configuration properties to see how they effect the formatting.
-The alert log is called from DEMOViewController because the sender of the message needs to be a UIViewController subclass.
+All the configuration is set in the AppDelegate and you can play around with the configuration properties to see how they effect the formatting.
 
 
 ## Requirements
-iOS 8
-Xcode 7
-* I don't know any reason why it wouldn't work on earlier versions, I just haven't tested it on them.
+iOS 8+
+
+Xcode 7+
+
 
 ## Installation
 
@@ -32,7 +32,7 @@ pod "KFXLog"
 #### Configuration 
 Before calling any of the KFXLog methods you should customise KFXLogConfigurator.
 
-1. Get a reference to the KFXLogConfigurator singleton (do not initilise an instance directly).
+1. Get a reference to the KFXLogConfigurator singleton (do not initilise an instance using -init).
 
     ```objective-c
     KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
@@ -46,18 +46,22 @@ Before calling any of the KFXLog methods you should customise KFXLogConfigurator
     config.debugLogMediums = KFXLogMediumConsole | KFXLogMediumFile | KFXLogMediumAlert;
     config.adHocLogMediums =  KFXLogMediumFile | KFXLogMediumAlert;
     config.releaseLogMediums = KFXLogMediumFile | KFXLogMediumService;
-    config.shouldCatchUncaughtExceptions = NO;
+    config.shouldLogUncaughtExceptions = NO;
     ```
 
 3. Customise the descriptors for specific logging mediums (Console, File, Alert, Service) that you need to
 
     ```objective-c
+    // Console Logs
     [config.cleanLogDescriptor configureWithLogFormat:KFXLogFormatFir];
     config.cleanLogDescriptor.leadingNewLines = 0;
+    // File Logs
     [config.fileLogDescriptor configureWithLogFormat:KFXLogFormatBirch];
     config.fileLogDescriptor.split = KFXFileLogsSplitByBuild;
+    // Alerts
     [config.alertLogDescriptor configureWithLogFormat:KFXLogFormatPine];
     config.alertLogDescriptor.whitelist = KFXLogTypeError | KFXLogTypeFail | KFXLogTypeWarning;
+    // Log to a service
     [config.serviceLogDescriptor configureWithLogFormat:KFXLogFormatBalsa];
     ```
 
@@ -80,11 +84,11 @@ Before calling any of the KFXLog methods you should customise KFXLogConfigurator
 2. Log
 
     ```objective-c
-    [KFXLog logInfo:@"This is some info." sender:nil];
-    [KFXLog logWarning:@"This is a warning, warning, warning" sender:self];
-    [KFXLog logError:error sender:self];
-    [KFXLog logWithCustomPrefix:@"<MESSAGE!!!>" message:@"This is a message" sender:self];
-    [KFXLog logSuccess:success withMessage:@"Log in successful?" sender:self];
+    [KFXLog logInfoWithSender:self format:@"This is some info."];
+    [KFXLog logWarningWithSender:self format:@"This is a warning, warning, warning"];
+    [KFXLog logError:error withSender:self];
+    [KFXLog logWithCustomPrefix:@"<MESSAGE!!!>" sender:self format:@"This is a message"];
+    [KFXLog logSuccess:success withSender:self format:@"Log in successful?"];
     ```
 
 
@@ -110,6 +114,10 @@ Before calling any of the KFXLog methods you should customise KFXLogConfigurator
 - KFXLogFormatter
 - KFXOptionsReader
 
+#### UI
+- KFXLogFilesMasterTVC
+- KFXLogFileDetailVC
+- KFXLogFileTVCell
 
 #### Internal
 - KFXLogger
@@ -224,6 +232,29 @@ It is recommended you don't change the configuration settings of KFXLogConfigura
 
     ```
 
+#### Viewing Log Files
+
+To show the log files on a device you just need to create an instance of KFXLogFilesMasterTVC and present it within a UINavigationController.
+
+If your presenting view controller is already embedded in a UINavigationController then the following will suffice.
+
+``` 
+    KFXLogFilesMasterTVC *logFilesTVC = [[KFXLogFilesMasterTVC alloc]init];
+    [self.navigationController showViewController:logFilesTVC sender:self];
+
+```
+
+If your presenting view controller is not already embedded in a UINavigationController then use the following code.
+
+``` 
+    KFXLogFilesMasterTVC *logFilesTVC = [[KFXLogFilesMasterTVC alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:logFilesTVC];
+    logFilesTVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Dismiss" style:UIBarButtonItemStylePlain target:self action:@selector(dismissButtonTapped:)];
+    [self showViewController:nav sender:self];
+    
+    // Implement the -dismissButtonTapped: method...
+
+```
 
 ## Log Format Styles
 

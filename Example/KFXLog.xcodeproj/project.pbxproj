@@ -24,8 +24,8 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		DBB6EE501DA2709300221AA9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBB6EE4F1DA2709300221AA9 /* Launch Screen.storyboard */; };
-		DBB6EE571DA2A42A00221AA9 /* DEMOLogTypeBitMaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB6EE561DA2A42A00221AA9 /* DEMOLogTypeBitMaskTests.m */; };
 		DBB6EE5A1DA3A8A400221AA9 /* DEMOLogExamples.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB6EE591DA3A8A400221AA9 /* DEMOLogExamples.m */; };
+		DBB6EE5E1DA3BF8E00221AA9 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = DBB6EE5D1DA3BF8E00221AA9 /* CHANGELOG.md */; };
 		E7C59827B3C217F88F923832 /* Pods_KFXLog_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 674A7B302F6823AAED549105 /* Pods_KFXLog_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,9 +70,9 @@
 		9D213851370A5369E7CAA0F7 /* KFXLog.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KFXLog.podspec; path = ../KFXLog.podspec; sourceTree = "<group>"; };
 		AB03F765522EE72F4A29468E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		DBB6EE4F1DA2709300221AA9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		DBB6EE561DA2A42A00221AA9 /* DEMOLogTypeBitMaskTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEMOLogTypeBitMaskTests.m; sourceTree = "<group>"; };
 		DBB6EE581DA3A8A400221AA9 /* DEMOLogExamples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEMOLogExamples.h; sourceTree = "<group>"; };
 		DBB6EE591DA3A8A400221AA9 /* DEMOLogExamples.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEMOLogExamples.m; sourceTree = "<group>"; };
+		DBB6EE5D1DA3BF8E00221AA9 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		FA7934A8EF4342E5BF45C74B /* Pods-KFXLog_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KFXLog_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KFXLog_Tests/Pods-KFXLog_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD2A5B2B0499EB3C99FF5360 /* Pods-KFXLog_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KFXLog_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KFXLog_Example/Pods-KFXLog_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				6003F5BB195388D20070C39A /* Tests.m */,
-				DBB6EE561DA2A42A00221AA9 /* DEMOLogTypeBitMaskTests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -194,6 +193,7 @@
 				9D213851370A5369E7CAA0F7 /* KFXLog.podspec */,
 				0F8ADB08F3301FF77E3594A5 /* README.md */,
 				AB03F765522EE72F4A29468E /* LICENSE */,
+				DBB6EE5D1DA3BF8E00221AA9 /* CHANGELOG.md */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -423,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BBEB84E1D53E7190093590A /* AppDelegate.m in Sources */,
+				DBB6EE5E1DA3BF8E00221AA9 /* CHANGELOG.md in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				DBB6EE5A1DA3A8A400221AA9 /* DEMOLogExamples.m in Sources */,
 				5BBEB84F1D53E7190093590A /* DEMOServiceLogger.m in Sources */,
@@ -435,7 +436,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F5BC195388D20070C39A /* Tests.m in Sources */,
-				DBB6EE571DA2A42A00221AA9 /* DEMOLogTypeBitMaskTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

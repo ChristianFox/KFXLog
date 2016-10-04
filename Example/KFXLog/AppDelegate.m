@@ -35,7 +35,7 @@
     config.debugLogMediums = KFXLogMediumConsole | KFXLogMediumFile | KFXLogMediumAlert;
     config.adHocLogMediums =  KFXLogMediumFile | KFXLogMediumAlert;
     config.releaseLogMediums = KFXLogMediumFile | KFXLogMediumService;
-    config.shouldCatchUncaughtExceptions = YES;
+    config.shouldLogUncaughtExceptions = YES;
     
     // 3.
     // ## Log Descriptors ##

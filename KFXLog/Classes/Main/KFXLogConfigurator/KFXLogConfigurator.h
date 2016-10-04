@@ -49,7 +49,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// Basic or Clean aka NSLog or print
 @property (nonatomic) KFXConsoleLogType consoleLogType;
 
-@property (nonatomic) BOOL shouldCatchUncaughtExceptions;
+/// Poorly named property - Replaced by shouldLogUncaughtExceptions
+@property (nonatomic) BOOL shouldCatchUncaughtExceptions DEPRECATED_ATTRIBUTE;
+/// If YES then uncaught exceptions will be logged
+@property (nonatomic) BOOL shouldLogUncaughtExceptions;
 
 // # Log Type descriptors - (Lazily loaded except serviceLogDesciptor) #
 /// The descriptor for when using basic console logging (aka NSLog)

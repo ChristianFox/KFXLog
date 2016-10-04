@@ -169,7 +169,6 @@ static dispatch_queue_t logQueue;
         va_end(args);
     }
     dispatch_async(logQueue, ^{
-        // TODO: Test this method can handle nil sender without crashing
         [self performLogSelector:@selector(logWithCustomPrefix:message:sender:),prefix,message,nil];
     });
 }

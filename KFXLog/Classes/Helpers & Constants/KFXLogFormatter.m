@@ -50,7 +50,7 @@
 //--------------------------------------------------------
 -(NSString *)prefixForLogType:(KFXLogType)logType descriptor:(KFXLogDescriptor *)descriptor{
     
-    // TODO: Need to do this a better way so we are not using a switch statement on a bitmask
+    // TODO: Need to do this a better way so we are not using a switch statement on a bitmask. Either change to if-else or use enum and bitmask...
     NSString *prefix;
     switch (logType) {
         case KFXLogTypeNone:{

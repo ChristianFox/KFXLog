@@ -43,7 +43,7 @@
     if (self) {
         
         KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
-        if (config.shouldCatchUncaughtExceptions) {
+        if (config.shouldLogUncaughtExceptions) {
             NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
         }        
 
