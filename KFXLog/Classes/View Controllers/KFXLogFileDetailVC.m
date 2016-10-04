@@ -273,7 +273,6 @@
     [mutAttString removeAttribute:NSBackgroundColorAttributeName range:NSMakeRange(0, mutAttString.length)];
     self.textView.attributedText = [mutAttString copy];
     
-    NSDictionary *highlightAttributes = @{NSBackgroundColorAttributeName:[UIColor greenColor]};
     NSString *haystack = self.textView.attributedText.string;
 
     // From: http://stackoverflow.com/questions/7033574/find-all-locations-of-substring-in-nsstring-not-just-first

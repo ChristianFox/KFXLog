@@ -94,13 +94,13 @@
 
 -(void)logException:(NSException *)exception{
     
-    NSString *message = [NSString stringWithFormat:@"*** Terminating app due to uncaught exception '%@', reason: '%@'\n%@",exception.name,exception.reason,exception.callStackSymbols, exception];
+    NSString *message = [NSString stringWithFormat:@"*** Terminating app due to uncaught exception '%@', reason: '%@'\n%@",exception.name,exception.reason,exception.callStackSymbols];
     [self logMessage:message withLogType:KFXLogTypeException sender:nil];
 }
 
 -(void)logUncaughtException:(NSException*)exception{
  
-    NSString *message = [NSString stringWithFormat:@"*** Terminating app due to uncaught exception '%@', reason: '%@'\n%@",exception.name,exception.reason,exception.callStackSymbols, exception];
+    NSString *message = [NSString stringWithFormat:@"*** Terminating app due to uncaught exception '%@', reason: '%@'\n%@",exception.name,exception.reason,exception.callStackSymbols];
     [self logMessage:message withLogType:KFXLogTypeUncaughtException sender:nil];
 
 }

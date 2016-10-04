@@ -109,7 +109,7 @@
     self.buildConfiguration = KFXBuildConfigurationNone;
     self.debugLogMediums = KFXLogMediumConsole;
     self.consoleLogType = KFXConsoleLogTypeBasic;
-    self.shouldCatchUncaughtExceptions = NO;
+    self.shouldLogUncaughtExceptions = NO;
     self.logFormatter = [KFXLogFormatter logFormatter];
 }
 
