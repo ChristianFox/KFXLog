@@ -228,7 +228,8 @@ static dispatch_queue_t logQueue;
 }
 
 +(void)logWillDeallocateObject:(id)object{
-    [self logToSelector:@selector(logWillDeallocateObject:) withObject:object sender:nil];
+    NSString *message = [NSString stringWithFormat:@"%@",object];
+    [self logToSelector:@selector(logWillDeallocateObjectDescription:) withObject:message sender:nil];
 }
 
 

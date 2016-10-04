@@ -130,29 +130,6 @@
                                                      attribute:NSLayoutAttributeLeading
                                                     multiplier:1.0
                                                       constant:[metrics[@"leftMargin"] doubleValue]]];
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fileNameLabel
-//                                                     attribute:NSLayoutAttributeTrailing
-//                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
-//                                                        toItem:self.contentView
-//                                                     attribute:NSLayoutAttributeTrailing
-//                                                    multiplier:1.0
-//                                                      constant:[metrics[@"rightMargin"] doubleValue]]];
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.creationDateLabel
-//                                                     attribute:NSLayoutAttributeTrailing
-//                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
-//                                                        toItem:self
-//                                                     attribute:NSLayoutAttributeTrailing
-//                                                    multiplier:1.0
-//                                                      constant:[metrics[@"rightMargin"] doubleValue]]];
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.modificationDateLabel
-//                                                     attribute:NSLayoutAttributeTrailing
-//                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
-//                                                        toItem:self
-//                                                     attribute:NSLayoutAttributeTrailing
-//                                                    multiplier:1.0
-//                                                      constant:[metrics[@"rightMargin"] doubleValue]]];
-
-
 
 }
 
@@ -160,9 +137,6 @@
 
 -(void)prepareForReuse{
     [super prepareForReuse];
-//    self.fileNameLabel.text = nil;
-//    self.creationDateLabel.text = nil;
-//    self.modificationDateLabel.text = nil;
 }
 
 

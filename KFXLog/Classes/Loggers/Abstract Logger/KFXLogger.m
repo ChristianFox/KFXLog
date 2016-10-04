@@ -94,13 +94,13 @@
 
 -(void)logException:(NSException *)exception{
     
-    NSString *message = [NSString stringWithFormat:@"\n%@",exception.callStackSymbols];
+    NSString *message = [NSString stringWithFormat:@"*** Terminating app due to uncaught exception '%@', reason: '%@'\n%@",exception.name,exception.reason,exception.callStackSymbols, exception];
     [self logMessage:message withLogType:KFXLogTypeException sender:nil];
 }
 
 -(void)logUncaughtException:(NSException*)exception{
  
-    NSString *message = [NSString stringWithFormat:@"\n%@",exception.callStackSymbols];
+    NSString *message = [NSString stringWithFormat:@"*** Terminating app due to uncaught exception '%@', reason: '%@'\n%@",exception.name,exception.reason,exception.callStackSymbols, exception];
     [self logMessage:message withLogType:KFXLogTypeUncaughtException sender:nil];
 
 }
@@ -119,7 +119,12 @@
 
 }
 
--(void)logWillDeallocateObject:(id)object{
+-(void)logWillDeallocateObjectDescription:(NSString *)objectDescription{
+    
+    [self logMessage:objectDescription withLogType:KFXLogTypeWillDeallocateObject sender:nil];
+}
+
+-(void)logWillDeallocateObject:(id)object DEPRECATED_ATTRIBUTE{
     NSString *message = [NSString stringWithFormat:@"Class: %@; Description: %@",NSStringFromClass([object class]),object];
     [self logMessage:message withLogType:KFXLogTypeWillDeallocateObject sender:nil];
 }

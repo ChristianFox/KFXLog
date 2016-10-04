@@ -223,10 +223,6 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)logEqualityWithObjectA:(id)objectA objectB:(id)objectB sender:(id  __nullable)sender;
 
 
-//======================================================
-#pragma mark - ** Deprecated Methods **
-//======================================================
-
 
 
 @end

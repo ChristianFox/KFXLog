@@ -50,7 +50,7 @@
 //--------------------------------------------------------
 -(NSString *)prefixForLogType:(KFXLogType)logType descriptor:(KFXLogDescriptor *)descriptor{
     
-    // TODO: Need to figure out a better way of doing all this so we are not using a switch statement on a bitmask
+    // TODO: Need to do this a better way so we are not using a switch statement on a bitmask
     NSString *prefix;
     switch (logType) {
         case KFXLogTypeNone:{
@@ -85,35 +85,35 @@
             break;
         }
         case KFXLogTypeWillDeallocateObject: {
-            prefix = @"WILL DEALLOC";
+            prefix = @"WILL_DEALLOC";
             break;
         }
         case KFXLogTypeMethodStart: {
-            prefix = @"METHOD START";
+            prefix = @"METHOD_START";
             break;
         }
         case KFXLogTypeMethodEnd: {
-            prefix = @"METHOD END";
+            prefix = @"METHOD_END";
             break;
         }
         case KFXLogTypeObjectChanged: {
-            prefix = @"OBJECT CHANGED";
+            prefix = @"OBJECT_CHANGED";
             break;
         }
         case KFXLogTypeNumberChanged: {
-            prefix = @"NUMBER CHANGED";
+            prefix = @"NUMBER_CHANGED";
             break;
         }
         case KFXLogTypeUIEvent: {
-            prefix = @"UI EVENT";
+            prefix = @"UI_EVENT";
             break;
         }
         case KFXLogTypeNotificationPosted: {
-            prefix = @"NOTE POSTED";
+            prefix = @"NOTE_POSTED";
             break;
         }
         case KFXLogTypeNotificationReceived: {
-            prefix = @"NOTE RECEIVED";
+            prefix = @"NOTE_RECEIVED";
             break;
         }
         case KFXLogTypeArray: {
@@ -145,11 +145,11 @@
             break;
         }
         case KFXLogTypeBlockStart: {
-            prefix = @"BLOCK START";
+            prefix = @"BLOCK_START";
             break;
         }
         case KFXLogTypeBlockEnd: {
-            prefix = @"BLOCK END";
+            prefix = @"BLOCK_END";
             break;
         }
         case KFXLogTypeThread: {
@@ -173,7 +173,7 @@
             break;
         }
         case KFXLogTypePredicateResult: {
-            prefix = @"PRED RESULT";
+            prefix = @"PRED_RESULT";
             break;
         }
         case KFXLogTypeSearchString: {
@@ -189,11 +189,15 @@
             break;
         }
         case KFXLogTypeUncaughtException:{
-            prefix = @"UNCAUGHT EXCEPTION";
+            prefix = @"UNCAUGHT_EXCEPTION";
             break;
         }
         case KFXLogTypeNotice:{
             prefix = @"NOTICE";
+            break;
+        }
+        case KFXLogTypeOperationQueue:{
+            prefix = @"OPERATION_QUEUE";
             break;
         }
     }

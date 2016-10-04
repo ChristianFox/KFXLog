@@ -24,18 +24,51 @@
                                     <action selector="viewLogFilesButtonTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="BOQ-VG-zBT"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MSy-1p-W2w">
-                                <frame key="frameInset" minX="103" minY="271" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uRR-SQ-Xdn">
+                                <state key="normal" title="Log some logs"/>
+                                <connections>
+                                    <action selector="logSomeLogsButtonTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="x0E-c8-6MU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cF3-6S-WUD">
+                                <state key="normal" title="Log lots of logs"/>
+                                <connections>
+                                    <action selector="logLotsOfLogsButtonTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="682-cU-p7K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWB-fM-Eeh">
+                                <state key="normal" title="Log collections"/>
+                                <connections>
+                                    <action selector="logCollectionsButtonTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="6Qi-Ig-Xcc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBy-dg-xVX">
+                                <state key="normal" title="Log uncaught exception (crash)"/>
+                                <connections>
+                                    <action selector="logUncaughtExceptionButtonTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="Dd1-0p-NUv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iis-XB-93o">
+                                <state key="normal" title="Log Alert"/>
+                                <connections>
+                                    <action selector="logAlertButtonTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="zDV-M9-0HM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="cF3-6S-WUD" firstAttribute="top" secondItem="uRR-SQ-Xdn" secondAttribute="bottom" constant="21" id="0VI-yC-SRi"/>
+                            <constraint firstItem="Iis-XB-93o" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="3e8-ws-weI"/>
+                            <constraint firstItem="cF3-6S-WUD" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="EaT-PN-YL5"/>
+                            <constraint firstItem="ZWB-fM-Eeh" firstAttribute="top" secondItem="cF3-6S-WUD" secondAttribute="bottom" constant="22" id="Gcl-Pz-Ylk"/>
+                            <constraint firstItem="Iis-XB-93o" firstAttribute="top" secondItem="RBy-dg-xVX" secondAttribute="bottom" constant="20" id="MQP-dY-67A"/>
+                            <constraint firstItem="RBy-dg-xVX" firstAttribute="top" secondItem="ZWB-fM-Eeh" secondAttribute="bottom" constant="30" id="SKI-Tq-UI5"/>
+                            <constraint firstItem="uRR-SQ-Xdn" firstAttribute="top" secondItem="zUX-N9-Ocj" secondAttribute="bottom" constant="62" id="Wn6-AX-Rhz"/>
+                            <constraint firstItem="RBy-dg-xVX" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="gfB-vC-jgT"/>
                             <constraint firstItem="zUX-N9-Ocj" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="hHO-5w-x8Z"/>
                             <constraint firstItem="zUX-N9-Ocj" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="43" id="t1j-0L-0nO"/>
+                            <constraint firstItem="ZWB-fM-Eeh" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="tDQ-AQ-QJd"/>
+                            <constraint firstItem="uRR-SQ-Xdn" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="xjj-wj-p4A"/>
                         </constraints>
                     </view>
                 </viewController>
