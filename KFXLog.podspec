@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KFXLog'
-  s.version          = '1.0.0.4'
+  s.version          = '1.0.0.5'
   s.summary          = 'KFXLog is a customisable logging library written in Objective-C.'
 
 # This description is used to generate tags and improve search results.

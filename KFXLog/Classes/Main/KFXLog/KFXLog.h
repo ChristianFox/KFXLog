@@ -43,6 +43,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Log a message with the prefix INFO, optionally supply the sender.
 +(void)logInfo:(NSString*)message sender:(id __nullable)sender DEPRECATED_ATTRIBUTE;
 
+#pragma mark NOTICE
+/// Log a message with the prefix NOTICE by passing a format string
++(void)logNotice:(NSString*__nullable)format,...;
+/// Log a message with the prefix NOTICE by passing a format string, optionally supply the sender.
++(void)logNoticeWithSender:(id __nullable)sender format:(NSString*__nullable)format,...;
+
 #pragma mark WARNING
 /// Log a message with the prefix WARNING by passing a format string
 +(void)logWarning:(NSString*__nullable)format,...;
@@ -70,10 +76,14 @@ NS_ASSUME_NONNULL_BEGIN
 //--------------------------------------------------------
 #pragma mark - Errors & Exceptions
 //--------------------------------------------------------
-/// Log an NSError with the prefix ERROR, optionally supply the sender.
+/// Log an NSError with the prefix ERROR, optionally supply the sender. Will always log even if the error is nil
 +(void)logError:(NSError *)error sender:(id __nullable)sender;
+/// Log an NSError with the prefix ERROR, optionally supply the sender. If error is nil then this method will not log anything.
++(void)logErrorIfExists:(NSError *__nullable)error sender:(id __nullable)sender;
 /// Log an NSException with the prefix EXCEPTION, optionally supply the sender.
 +(void)logException:(NSException*)exception sender:(id __nullable)sender;
+/// Log an uncaught NSException with the prefix UNCAUGHT EXCEPTION
++(void)logUncaughtException:(NSException*)exception;
 
 
 //--------------------------------------------------------
@@ -177,14 +187,20 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)logThread:(NSThread* __nullable)thread withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;
 /// Log an NSThread with the Prefix THREAD. Optionally pass a message and the sender. Logs state, priority & isMain.
 +(void)logThread:(NSThread*)thread withMessage:(NSString*__nullable)message sender:(id  __nullable)sender DEPRECATED_ATTRIBUTE;
+
 /// Log an dispatch queue with the Prefix QUEUE, as I can't access the queue name from the queue you need to pass that in manually as a NSString. Optionally pass a format string and the sender
 +(void)logQueue:(NSString*__nullable)queueName withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;
 /// Log an dispatch queue with the Prefix QUEUE, as I can't access the queue name from the queue you need to pass that in manually as a NSString. Optionally pass a message and the sender
 +(void)logQueue:(NSString*)queueName withMessage:(NSString*__nullable)message sender:(id  __nullable)sender DEPRECATED_ATTRIBUTE;
 /// Log an NSOperation with the Prefix OPERATION. Optionally pass a format string and the sender. Logs name, state, priority & dependencies count
+
 +(void)logOperation:(NSOperation*__nullable)operation withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;
 /// Log an NSOperation with the Prefix OPERATION. Optionally pass a message and the sender. Logs name, state, priority & dependencies count
 +(void)logOperation:(NSOperation*)operation withMessage:(NSString*__nullable)message sender:(id  __nullable)sender DEPRECATED_ATTRIBUTE;
+
+/// Log an NSOperationQueue with the Prefix OPERATION_QUEUE. Optionally pass a format string and the sender.
++(void)logOperationQueue:(NSOperationQueue*__nullable)operationQ withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;
+
 
 //--------------------------------------------------------
 #pragma mark - URLs

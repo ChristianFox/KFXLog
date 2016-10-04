@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 //--------------------------------------------------------
 /// Log a message with the prefix INFO, optionally supply the sender.
 -(void)logInfo:(NSString*)message sender:(id  __nullable)sender;
+/// Log a message with the prefix NOTICE, optionally supply the sender.
+-(void)logNotice:(NSString*)message sender:(id  __nullable)sender;
 /// Log a message with the prefix WARNING, optionally supply the sender.
 -(void)logWarning:(NSString*)message sender:(id  __nullable)sender;
 /// Log a message with the prefix FAIL, optionally supply the sender.
@@ -155,7 +157,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)logQueue:(NSString*)queueName withMessage:(NSString*)message sender:(id  __nullable)sender;
 /// Log an NSOperation with the Prefix OPERATION. Optionally pass a message and the sender. Logs name, state, priority & dependencies count
 -(void)logOperation:(NSOperation*)operation withMessage:(NSString*)message sender:(id  __nullable)sender;
-
+/// Log an NSOperationQueue with the Prefix OPERATIONQUEUE. Optionally pass a message and the sender. Logs name, state, priority & dependencies count
+-(void)logOperationQueue:(NSOperationQueue*)operationQ withMessage:(NSString*)message sender:(id  __nullable)sender;
 
 //--------------------------------------------------------
 #pragma mark - URLs

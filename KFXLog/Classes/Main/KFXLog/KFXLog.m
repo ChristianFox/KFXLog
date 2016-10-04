@@ -44,7 +44,6 @@ static dispatch_queue_t logQueue;
 //======================================================
 +(void)initialize{
     logQueue = dispatch_queue_create("com.kfxtech.kfxlog", NULL);
-    NSSetUncaughtExceptionHandler(&logUncaughtExceptions);
 }
 
 //--------------------------------------------------------
@@ -79,6 +78,30 @@ static dispatch_queue_t logQueue;
 +(void)logInfo:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
     [self logToSelector:@selector(logInfo:sender:) withObject:message sender:sender];
     
+}
+
+#pragma mark NOTICE
++(void)logNotice:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    [self logToSelector:@selector(logNotice:sender:) withObject:message sender:nil];
+}
+
++(void)logNoticeWithSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    [self logToSelector:@selector(logNotice:sender:) withObject:message sender:sender];
+
 }
 
 #pragma mark WARNING
@@ -177,8 +200,19 @@ static dispatch_queue_t logQueue;
     [self logToSelector:@selector(logError:sender:) withObject:error sender:sender];
 }
 
++(void)logErrorIfExists:(NSError *)error sender:(id)sender{
+    if (error == nil) {
+        return;
+    }
+    [self logToSelector:@selector(logError:sender:) withObject:error sender:self];
+}
+
 +(void)logException:(NSException*)exception sender:(id)sender{
     [self logToSelector:@selector(logException:) withObject:exception sender:sender];
+}
+
++(void)logUncaughtException:(NSException *)exception{
+    [self logToSelector:@selector(logUncaughtException:) withObject:exception sender:nil];
 }
 
 
@@ -374,7 +408,7 @@ static dispatch_queue_t logQueue;
     });
 }
 
-+(void)logThread:(NSThread*)thread withMessage:(NSString*)message sender:(id)sender{
++(void)logThread:(NSThread*)thread withMessage:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
     dispatch_async(logQueue, ^{
         [self performLogSelector:@selector(logThread:withMessage:sender:),thread,message,sender];
     });
@@ -393,7 +427,7 @@ static dispatch_queue_t logQueue;
     });
 }
 
-+(void)logQueue:(NSString*)queueName withMessage:(NSString*)message sender:(id)sender{
++(void)logQueue:(NSString*)queueName withMessage:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
     dispatch_async(logQueue, ^{
         [self performLogSelector:@selector(logQueue:withMessage:sender:),queueName,message,sender];
     });
@@ -412,11 +446,28 @@ static dispatch_queue_t logQueue;
     });
 }
 
-+(void)logOperation:(NSOperation*)operation withMessage:(NSString*)message sender:(id)sender{
++(void)logOperation:(NSOperation*)operation withMessage:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
     dispatch_async(logQueue, ^{
         [self performLogSelector:@selector(logOperation:withMessage:sender:),operation,message,sender];
     });
 }
+
++(void)logOperationQueue:(NSOperationQueue *)operationQ withSender:(id)sender format:(NSString *)format, ...{
+    
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    dispatch_async(logQueue, ^{
+        [self performLogSelector:@selector(logOperationQueue:withMessage:sender:),operationQ,message,sender];
+    });
+
+}
+
+
 
 //--------------------------------------------------------
 #pragma mark - URLs
@@ -629,14 +680,6 @@ static dispatch_queue_t logQueue;
     return [configurator.optionsReader logMediumsForBuildConfiguration:buildConfig];
 }
 
-//--------------------------------------------------------
-#pragma mark - Crash Logging
-//--------------------------------------------------------
-void logUncaughtExceptions(NSException *exception){
-    
-    [KFXLog logToSelector:@selector(logUncaughtException:) withObject:exception sender:nil];
-    
-}
 
 
 @end

@@ -28,6 +28,7 @@
 #import "KFXLogger_Protected.h"
 #import "KFXLogConfigurator_Internal.h"
 #import "KFXLogFormatter.h"
+#import "KFXLog.h"
 
 @implementation KFXLogger
 
@@ -36,12 +37,31 @@
 //======================================================
 #pragma mark - ** Public Methods **
 //======================================================
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+        if (config.shouldCatchUncaughtExceptions) {
+            NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+        }        
+
+    }
+    return self;
+}
+
 //--------------------------------------------------------
 #pragma mark - Standard Logs
 //--------------------------------------------------------
 -(void)logInfo:(NSString*)message sender:(id)sender{
     
     [self logMessage:message withLogType:KFXLogTypeInfo sender:sender];
+}
+
+-(void)logNotice:(NSString *)message sender:(id)sender{
+    
+    [self logMessage:message withLogType:KFXLogTypeNotice sender:sender];
 }
 
 -(void)logWarning:(NSString *)message sender:(id)sender{
@@ -56,7 +76,9 @@
 
 -(void)logWithCustomPrefix:(NSString *)prefix message:(NSString *)message sender:(id)sender{
     
-    [self logMessage:message withLogType:KFXLogTypeCustom prefix:prefix sender:sender];
+    KFXLogDescriptor *descriptor = [self logDescriptor];
+    NSString *fullPrefix = [NSString stringWithFormat:@"%@%@%@",descriptor.prefixBookendFront,prefix,descriptor.prefixBookendBack];
+    [self logMessage:message withLogType:KFXLogTypeCustom prefix:fullPrefix sender:sender];
 }
 
 
@@ -423,6 +445,19 @@
 
 }
 
+-(void)logOperationQueue:(NSOperationQueue *)operationQ withMessage:(NSString *)message sender:(id)sender{
+    
+    NSString *opCount = [NSString stringWithFormat:@"Operations: %lu",(unsigned long)operationQ.operationCount];
+    NSString *suspended = [NSString stringWithFormat:@"Suspended: %@",(operationQ.suspended) ? @"Yes":@"No"];
+    
+    
+    NSString *fullMessage = [NSString stringWithFormat:@"Name: %@; %@; %@",
+                             operationQ.name,opCount,suspended];
+    
+    [self logMessage:fullMessage withLogType:KFXLogTypeOperationQueue sender:sender];
+
+}
+
 //--------------------------------------------------------
 #pragma mark - URLs
 //--------------------------------------------------------
@@ -551,6 +586,14 @@
     return highestCount;
 }
 
+//--------------------------------------------------------
+#pragma mark - Exception Logging
+//--------------------------------------------------------
+void uncaughtExceptionHandler(NSException *exception){
+    
+    [KFXLog logUncaughtException:exception];
+    
+}
 
 
 //======================================================

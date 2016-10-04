@@ -85,7 +85,7 @@ typedef NS_ENUM(NSUInteger, KFXFileLogsSplit){
 };
 
 /// The log types
-typedef NS_OPTIONS(long long, KFXLogType) {
+typedef NS_OPTIONS(unsigned long long, KFXLogType) {
     KFXLogTypeNone                  = 0,
     KFXLogTypeInfo                  = 1 << 0,
     KFXLogTypeWarning               = 1 << 1,
@@ -118,9 +118,11 @@ typedef NS_OPTIONS(long long, KFXLogType) {
     KFXLogTypeReceiveFromURL        = 1 << 28,
     KFXLogTypePredicateResult       = 1 << 29,
     KFXLogTypeSearchString          = 1 << 30,
-    KFXLogTypeCompare               = 1 << 31,
-    KFXLogTypeEquality              = 1LL << 32,
-    KFXLogTypeUncaughtException     = 1LL << 33
+    KFXLogTypeCompare               = 1ULL << 31,
+    KFXLogTypeEquality              = 1ULL << 32,
+    KFXLogTypeUncaughtException     = 1ULL << 33,
+    KFXLogTypeNotice                = 1ULL << 34,
+    KFXLogTypeOperationQueue        = 1ULL << 35
 };
 
 

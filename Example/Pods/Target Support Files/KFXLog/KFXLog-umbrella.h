@@ -20,6 +20,7 @@
 #import "KFXLog.h"
 #import "KFXLogConfigurator.h"
 #import "KFXLogConfigurator_Internal.h"
+#import "KFXLogFileTVCell.h"
 #import "KFXLogFileDetailVC.h"
 #import "KFXLogFilesMasterTVC.h"
 

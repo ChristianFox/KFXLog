@@ -35,7 +35,7 @@
     config.debugLogMediums = KFXLogMediumConsole | KFXLogMediumFile | KFXLogMediumAlert;
     config.adHocLogMediums =  KFXLogMediumFile | KFXLogMediumAlert;
     config.releaseLogMediums = KFXLogMediumFile | KFXLogMediumService;
-    config.shouldCatchUncaughtExceptions = NO;
+    config.shouldCatchUncaughtExceptions = YES;
     
     // 3.
     // ## Log Descriptors ##
@@ -46,6 +46,7 @@
     // ### CleanLogDescriptor ###
     [config.cleanLogDescriptor configureWithLogFormat:KFXLogFormatFir];
     config.cleanLogDescriptor.blacklist = KFXLogTypeNone;
+    config.cleanLogDescriptor.showSender = KFXShowSenderClassOnly;
     
     // ### FileLogDescriptor ###
     [config.fileLogDescriptor configureWithLogFormat:KFXLogFormatBirch];
@@ -107,14 +108,20 @@
     [self testLogSearchString];
     [self testLogComparisonWithObjects];
     [self testLogEquality];
+    [self testLogNotice];
     
-    // * Commented out because they take up loads of space in the console, feel free to uncomment
+    /* 
+     Commented out because they take up loads of space in the console, feel free to uncomment
+     */
 //    [self testLogArrayWithAllOptions];
 //    [self testLogDictionaryWithAllOptions];
 //    [self testLogSetWithAllOptions];
     
-    // * Commented out because this method deliberately causes a crash, feel free to uncomment
-//    [self testLogUncaughtException];
+    /* 
+     Commented out because this method deliberately causes a crash, feel free to uncomment
+     */
+    [self testLogUncaughtException];
+
     
         return YES;
 }
@@ -127,6 +134,8 @@
     [KFXLog logInfoWithSender:nil format:nil];
     [KFXLog logInfoWithSender:self format:nil];
     [KFXLog logInfoWithSender:nil format:@"This is some info with a number: %@",@665];
+    [KFXLog logInfoWithSender:self format:@"Info without args"];
+
 }
 
 -(void)testLogWarning{
@@ -134,8 +143,11 @@
     [KFXLog logWarning:nil];
     [KFXLog logWarning:@"This is a warning, warning, %@",@"warning"];
     [KFXLog logWarningWithSender:nil format:nil];
+    [KFXLog logWarningWithSender:self format:nil];
     [KFXLog logWarningWithSender:nil format:@"This is a warning, warning, %@",@"warning"];
     [KFXLog logWarningWithSender:self format:@"This is a warning, warning, %@",@"warning"];
+    [KFXLog logWarningWithSender:self format:@"Warning without args"];
+
     
 }
 
@@ -144,8 +156,10 @@
     [KFXLog logFail:nil];
     [KFXLog logFail:@"Reporting a failure makes me %@",@":]"];
     [KFXLog logFailWithSender:nil format:nil];
+    [KFXLog logFailWithSender:self format:nil];
     [KFXLog logFailWithSender:nil format:@"Not reporting a failure makes me %@",@"a sad panda"];
     [KFXLog logFailWithSender:self format:@"Failure is just %@ that hasn't happened yet", @"success"];
+    [KFXLog logFailWithSender:self format:@"Fail without args"];
 }
 
 -(void)testLogError{
@@ -411,7 +425,15 @@
 
 }
 
+-(void)testLogNotice{
+    
+    [KFXLog logNotice:nil];
+    [KFXLog logNotice:@"This is some Notice with a number: %@",@665];
+    [KFXLog logNoticeWithSender:nil format:nil];
+    [KFXLog logNoticeWithSender:self format:nil];
+    [KFXLog logNoticeWithSender:nil format:@"If you notice this notice you will notice that is is not worth %@",@"noticing"];
 
+}
 
 
 -(void)testLogUncaughtException{

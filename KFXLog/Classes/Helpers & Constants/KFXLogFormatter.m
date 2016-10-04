@@ -50,6 +50,7 @@
 //--------------------------------------------------------
 -(NSString *)prefixForLogType:(KFXLogType)logType descriptor:(KFXLogDescriptor *)descriptor{
     
+    // TODO: Need to figure out a better way of doing all this so we are not using a switch statement on a bitmask
     NSString *prefix;
     switch (logType) {
         case KFXLogTypeNone:{
@@ -189,6 +190,10 @@
         }
         case KFXLogTypeUncaughtException:{
             prefix = @"UNCAUGHT EXCEPTION";
+            break;
+        }
+        case KFXLogTypeNotice:{
+            prefix = @"NOTICE";
             break;
         }
     }
