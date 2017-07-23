@@ -94,6 +94,14 @@
     // Log a summary of the current settings to the console
     [config printSettings];
     
+    
+    // 6.
+    // Purge
+    NSError *error;
+    if (![config purgeLogFilesOlderThan:3 withError:&error]) {
+        NSLog(@"ERROR: %@",error);
+    }
+    
     return YES;
 }
 

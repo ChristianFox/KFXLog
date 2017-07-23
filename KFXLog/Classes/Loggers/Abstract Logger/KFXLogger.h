@@ -32,6 +32,5 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KFXLogger : NSObject <KFXLoggerInterface>
 
 
-
 @end
 NS_ASSUME_NONNULL_END

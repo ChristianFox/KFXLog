@@ -99,6 +99,59 @@
 }
 
 
+//--------------------------------------------------------
+#pragma mark Purge
+//--------------------------------------------------------
+-(NSInteger)purgeLogFilesOlderThan:(NSInteger)days withError:(NSError * _Nullable __autoreleasing * _Nullable)error{
+    
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    KFXFileLogDescriptor *descriptor = config.fileLogDescriptor;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *url = [NSURL fileURLWithPath:descriptor.directoryPath isDirectory:YES];
+    if (url == nil) {
+        return -1;
+    }
+    NSArray *contents = [fileManager contentsOfDirectoryAtURL:url
+                                   includingPropertiesForKeys:@[NSURLCreationDateKey]
+                                                      options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                        error:error];
+    if (contents == nil) {
+        if (error) {
+            return -1;
+        }else{
+            return 0;
+        }
+    }
+    
+    NSTimeInterval timeInt = 60*60*24*days;
+    NSDate *cutoffDate = [NSDate dateWithTimeIntervalSinceNow:-timeInt];
+    NSInteger deletedCount = 0;
+    
+    for (NSURL *fileURL in contents) {
+        
+        
+        NSDictionary *attributes = [fileManager attributesOfItemAtPath:[fileURL path] error:error];
+        NSDate *createdDate = attributes[NSFileCreationDate];
+        if (createdDate == nil) {
+            return -1;
+        }else{
+            
+            if ([createdDate compare:cutoffDate] == NSOrderedAscending) {
+                if (![fileManager removeItemAtURL:fileURL error:error]) {
+                    return -1;
+                }else{
+                    deletedCount++;
+                }
+            }
+        }
+        
+    }
+    
+    
+    return deletedCount;
+}
+
 
 
 //======================================================

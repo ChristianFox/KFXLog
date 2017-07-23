@@ -38,7 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// The base file name which then has a different suffix appended depending on the split property. Defaults to "Logs"
 @property (strong,nonatomic) NSString *fileNameBase;
 
-
 //--------------------------------------------------------
 #pragma mark - Initiliser
 //--------------------------------------------------------

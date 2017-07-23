@@ -1,6 +1,20 @@
 
 # Change Log #
 
+## [1.2.0]
+
+#### Fixed 
+- Log File Viewer search bar autolayout fixes
+
+#### Changes
+
+#### Enhancements
+- Improvements to Log File Viewer.
+    - Display number of matches
+    - Previous & next match buttons
+- File Logs can now be deleted after x days by calling -purgeLogFilesOlderThan: withError: method of KFXLogConfigurator
+
+
 ## [1.1.0](https://github.com/ChristianFox/KFXLog/releases/tag/1.1.0) 2016/10/04
 
 #### Fixed 

@@ -86,5 +86,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// Logs settings to the console using NSLog
 -(void)printSettings;
 
+/**
+ *  Delete old log files older than the specified number of days
+ *
+ *  @return The number of files deleted. If there is an error it will be a negative value
+ *
+ *  @since 1.2.0
+ */
+-(NSInteger)purgeLogFilesOlderThan:(NSInteger)days withError:(NSError**)error;
+
 @end
 NS_ASSUME_NONNULL_END

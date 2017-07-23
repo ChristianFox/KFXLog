@@ -26,10 +26,9 @@
 
 #import <Foundation/Foundation.h>
 #import "KFXLoggerDefinitions.h"
-#import "KFXLoggerInterface.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@interface KFXLog : NSObject <KFXLoggerInterface>
+@interface KFXLog : NSObject
 
 
 //--------------------------------------------------------

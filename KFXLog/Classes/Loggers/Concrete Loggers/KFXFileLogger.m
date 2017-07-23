@@ -71,6 +71,10 @@
 //======================================================
 #pragma mark - ** Private Methods **
 //======================================================
+//--------------------------------------------------------
+#pragma mark Logs
+//--------------------------------------------------------
+
 -(void)logMessage:(NSString*)message withPrefix:(NSString*)prefix sender:(id)sender{
 
     KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
@@ -127,6 +131,9 @@
 }
 
 
+//--------------------------------------------------------
+#pragma mark File Path
+//--------------------------------------------------------
 -(NSString*)fullPathForLogFile{
     
     KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
@@ -179,7 +186,6 @@
     }
     return fullPath;
 }
-
 
 
 
