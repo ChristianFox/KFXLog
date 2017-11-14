@@ -218,7 +218,7 @@ static dispatch_queue_t logQueue;
     if (error == nil) {
         return;
     }
-    [self logToSelector:@selector(logError:sender:) withObject:error sender:self];
+    [self logToSelector:@selector(logError:sender:) withObject:error sender:sender];
 }
 
 +(void)logException:(NSException*)exception sender:(id)sender{

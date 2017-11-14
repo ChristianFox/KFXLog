@@ -1,6 +1,8 @@
 
 # Change Log #
 
+## v1.3.1 - bug fixes
+
 ## v1.3.0
 - Adds shouldLogOnBackgroundQueue flag to KFXLogConfigurator and sets to default to NO
 

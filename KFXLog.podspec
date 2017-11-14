@@ -21,7 +21,7 @@ Log messages are prefixed to make it easy to filter out the noise and focus on t
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Christian Fox' => 'christianfox890@icloud.com' }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '8.2'
 
   s.source_files = 'KFXLog/Classes/**/*'
   

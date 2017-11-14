@@ -214,7 +214,7 @@
     NSNotification *note = [NSNotification notificationWithName:@"FakeNotification1"
                                                          object:self
                                                        userInfo:@{@"SomeInfo":@42}];
-    [KFXLog logNotificationPosted:note sender:self];
+    [KFXLog logNotificationWillBePosted:note sender:self];
 
 }
 
