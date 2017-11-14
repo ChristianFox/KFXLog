@@ -115,7 +115,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Notification Logs
 //--------------------------------------------------------
 /// Log the posting of a local notification using the prefix NOTE POSTED. Provide to NSNotification to have info logged (name, object, userInfo). Optionally supply the sender.
-+(void)logNotificationPosted:(NSNotification*)note sender:(id __nullable)sender;
++(void)logNotificationWillBePosted:(NSNotification*)note sender:(id __nullable)sender;
++(void)logNotificationPosted:(NSNotification*)note sender:(id __nullable)sender DEPRECATED_ATTRIBUTE;
+
 /// Log the receiving of a local notification using the prefix NOTE RECEIVED. Provide to NSNotification to have info logged (name, object, userInfo). Optionally supply the sender.
 +(void)logNotificationReceived:(NSNotification*)note sender:(id __nullable)sender;
 

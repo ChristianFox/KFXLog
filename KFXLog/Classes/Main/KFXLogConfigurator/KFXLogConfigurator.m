@@ -164,6 +164,7 @@
     self.consoleLogType = KFXConsoleLogTypeBasic;
     self.shouldLogUncaughtExceptions = NO;
     self.logFormatter = [KFXLogFormatter logFormatter];
+    self.shouldLogOnBackgroundQueue = NO;
 }
 
 

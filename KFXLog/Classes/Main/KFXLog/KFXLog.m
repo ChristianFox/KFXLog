@@ -168,9 +168,14 @@ static dispatch_queue_t logQueue;
         message = [[NSString alloc]initWithFormat:format arguments:args];
         va_end(args);
     }
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logWithCustomPrefix:message:sender:),prefix,message,nil];
+        });
+    }else{
         [self performLogSelector:@selector(logWithCustomPrefix:message:sender:),prefix,message,nil];
-    });
+    }
 }
 
 +(void)logWithCustomPrefix:(NSString *)prefix sender:(id)sender format:(NSString *)format, ...{
@@ -181,15 +186,25 @@ static dispatch_queue_t logQueue;
         message = [[NSString alloc]initWithFormat:format arguments:args];
         va_end(args);
     }
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logWithCustomPrefix:message:sender:),prefix,message,sender];
+        });
+    }else{
         [self performLogSelector:@selector(logWithCustomPrefix:message:sender:),prefix,message,sender];
-    });
+    }
 }
 
 +(void)logWithCustomPrefix:(NSString *)prefix message:(NSString *)message sender:(id)sender DEPRECATED_ATTRIBUTE{
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logWithCustomPrefix:message:sender:),prefix,message,sender];
+        });
+    }else{
         [self performLogSelector:@selector(logWithCustomPrefix:message:sender:),prefix,message,sender];
-    });
+    }
 }
 
 //--------------------------------------------------------
@@ -236,15 +251,25 @@ static dispatch_queue_t logQueue;
 #pragma mark - Method Lifecycle Logs
 //--------------------------------------------------------
 +(void)logMethodStart:(SEL)selector sender:(id)sender{
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logMethodStart:sender:),NSStringFromSelector(selector),sender];
+        });
+    }else{
         [self performLogSelector:@selector(logMethodStart:sender:),NSStringFromSelector(selector),sender];
-    });
+    }
 }
 
 +(void)logMethodEnd:(SEL)selector sender:(id)sender{
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logMethodEnd:sender:),NSStringFromSelector(selector),sender];
+        });
+    }else{
         [self performLogSelector:@selector(logMethodEnd:sender:),NSStringFromSelector(selector),sender];
-    });
+    }
 }
 
 //--------------------------------------------------------
@@ -268,7 +293,11 @@ static dispatch_queue_t logQueue;
 //--------------------------------------------------------
 #pragma mark - Notification Logs
 //--------------------------------------------------------
-+(void)logNotificationPosted:(NSNotification*)note sender:(id)sender{
++(void)logNotificationWillBePosted:(NSNotification*)note sender:(id)sender{
+    [self logToSelector:@selector(logNotificationPosted:sender:) withObject:note sender:sender];
+}
+
++(void)logNotificationPosted:(NSNotification*)note sender:(id)sender DEPRECATED_ATTRIBUTE{
     [self logToSelector:@selector(logNotificationPosted:sender:) withObject:note sender:sender];
 }
 
@@ -281,37 +310,75 @@ static dispatch_queue_t logQueue;
 #pragma mark - Value Lifecycle Logs
 //--------------------------------------------------------
 +(void)logObjectChangeAtKeyPath:(NSString*)keyPath oldValue:(id)oldValue newValue:(id)newValue sender:(id)sender{
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logObjectChangeAtKeyPath:oldValue:newValue:sender:),keyPath,oldValue,newValue,sender];
+        });
+    }else{
         [self performLogSelector:@selector(logObjectChangeAtKeyPath:oldValue:newValue:sender:),keyPath,oldValue,newValue,sender];
-    });
+    }
 }
 
 +(void)logNumberChangedAtKeyPath:(NSString*)keyPath oldNumber:(NSNumber*)oldNumber newNumber:(NSNumber*)newNumber sender:(id)sender{
-    dispatch_async(logQueue, ^{
+
+    
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logNumberChangedAtKeyPath:oldNumber:newNumber:sender:),keyPath,oldNumber,newNumber,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logNumberChangedAtKeyPath:oldNumber:newNumber:sender:),keyPath,oldNumber,newNumber,sender];
-    });
+
+    }
 }
 
 //--------------------------------------------------------
 #pragma mark - Collections
 //--------------------------------------------------------
 +(void)logArray:(NSArray <NSObject*>*)array options:(KFXCollectionLogOptions)options sender:(id)sender{
-    dispatch_async(logQueue, ^{
+ 
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logArray:collectionLogOptions:sender:),array,@(options),sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logArray:collectionLogOptions:sender:),array,@(options),sender];
-    });
-    
+
+    }
 }
 
 +(void)logDictionary:(NSDictionary*)dictionary options:(KFXCollectionLogOptions)options sender:(id)sender{
-    dispatch_async(logQueue, ^{
+
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logDictionary:collectionLogOptions:sender:),dictionary,@(options),sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logDictionary:collectionLogOptions:sender:),dictionary,@(options),sender];
-    });
+
+    }
 }
 
 +(void)logSet:(NSSet*)set options:(KFXCollectionLogOptions)options sender:(id)sender{
-    dispatch_async(logQueue, ^{
+
+    
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logSet:collectionLogOptions:sender:),set,@(options),sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logSet:collectionLogOptions:sender:),set,@(options),sender];
-    });
+
+    }
 }
 
 
@@ -327,15 +394,31 @@ static dispatch_queue_t logQueue;
         message = [[NSString alloc]initWithFormat:format arguments:args];
         va_end(args);
     }
-    dispatch_async(logQueue, ^{
+ 
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logProgress:withMessage:sender:),@(progress),message,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logProgress:withMessage:sender:),@(progress),message,sender];
-    });
+
+    }
 }
 
 +(void)logProgress:(double)progress withMessage:(NSString*)message sender:(id)sender{
-    dispatch_async(logQueue, ^{
+
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logProgress:withMessage:sender:),@(progress),message,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logProgress:withMessage:sender:),@(progress),message,sender];
-    });
+
+    }
 }
 
 +(void)logSuccess:(BOOL)success withSender:(id)sender format:(NSString *)format, ...{
@@ -346,15 +429,32 @@ static dispatch_queue_t logQueue;
         message = [[NSString alloc]initWithFormat:format arguments:args];
         va_end(args);
     }
-    dispatch_async(logQueue, ^{
+
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logSuccess:withMessage:sender:),@(success),message,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logSuccess:withMessage:sender:),@(success),message,sender];
-    });
+
+    }
 }
 
 +(void)logSuccess:(BOOL)success withMessage:(NSString*)message sender:(id)sender{
-    dispatch_async(logQueue, ^{
+   
+    
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logSuccess:withMessage:sender:),@(success),message,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logSuccess:withMessage:sender:),@(success),message,sender];
-    });    
+
+    }
 }
 
 +(void)logValidity:(BOOL)isValid ofObject:(id)object sender:(id)sender format:(NSString *)format, ...{
@@ -365,15 +465,30 @@ static dispatch_queue_t logQueue;
         message = [[NSString alloc]initWithFormat:format arguments:args];
         va_end(args);
     }
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logValidity:ofObject:sender:),@(isValid),object,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logValidity:ofObject:sender:),@(isValid),object,sender];
-    });
+
+    }
 }
 
 +(void)logValidity:(BOOL)isValid ofObject:(id)object sender:(id)sender{
     dispatch_async(logQueue, ^{
         [self performLogSelector:@selector(logValidity:ofObject:sender:),@(isValid),object,sender];
     });
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            
+        });
+    }else{
+        
+    }
 }
 
 
@@ -381,15 +496,32 @@ static dispatch_queue_t logQueue;
 #pragma mark - Blocks
 //--------------------------------------------------------
 +(void)logBlockStartWithName:(NSString*)nameForBlock sender:(id)sender{
-    dispatch_async(logQueue, ^{
+
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logBlockStartWithName:sender:),nameForBlock,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logBlockStartWithName:sender:),nameForBlock,sender];
-    });
+
+    }
 }
 
 +(void)logBlockEndWithName:(NSString*)nameForBlock sender:(id)sender{
-    dispatch_async(logQueue, ^{
+
+    
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logBlockEndWithName:sender:),nameForBlock,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logBlockEndWithName:sender:),nameForBlock,sender];
-    });
+
+    }
 }
 
 //--------------------------------------------------------
@@ -403,15 +535,30 @@ static dispatch_queue_t logQueue;
         message = [[NSString alloc]initWithFormat:format arguments:args];
         va_end(args);
     }
-    dispatch_async(logQueue, ^{
+
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logThread:withMessage:sender:),thread,message,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logThread:withMessage:sender:),thread,message,sender];
-    });
+
+    }
 }
 
 +(void)logThread:(NSThread*)thread withMessage:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logThread:withMessage:sender:),thread,message,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logThread:withMessage:sender:),thread,message,sender];
-    });
+
+    }
 }
 
 +(void)logQueue:(NSString *)queueName withSender:(id)sender format:(NSString *)format, ...{
@@ -422,15 +569,30 @@ static dispatch_queue_t logQueue;
         message = [[NSString alloc]initWithFormat:format arguments:args];
         va_end(args);
     }
-    dispatch_async(logQueue, ^{
+    
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logQueue:withMessage:sender:),queueName,message,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logQueue:withMessage:sender:),queueName,message,sender];
-    });
+
+    }
 }
 
 +(void)logQueue:(NSString*)queueName withMessage:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logQueue:withMessage:sender:),queueName,message,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logQueue:withMessage:sender:),queueName,message,sender];
-    });
+
+    }
 }
 
 +(void)logOperation:(NSOperation *)operation withSender:(id)sender format:(NSString *)format, ...{
@@ -441,15 +603,29 @@ static dispatch_queue_t logQueue;
         message = [[NSString alloc]initWithFormat:format arguments:args];
         va_end(args);
     }
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logOperation:withMessage:sender:),operation,message,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logOperation:withMessage:sender:),operation,message,sender];
-    });
+
+    }
 }
 
 +(void)logOperation:(NSOperation*)operation withMessage:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logOperation:withMessage:sender:),operation,message,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logOperation:withMessage:sender:),operation,message,sender];
-    });
+
+    }
 }
 
 +(void)logOperationQueue:(NSOperationQueue *)operationQ withSender:(id)sender format:(NSString *)format, ...{
@@ -461,10 +637,16 @@ static dispatch_queue_t logQueue;
         message = [[NSString alloc]initWithFormat:format arguments:args];
         va_end(args);
     }
-    dispatch_async(logQueue, ^{
-        [self performLogSelector:@selector(logOperationQueue:withMessage:sender:),operationQ,message,sender];
-    });
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logOperationQueue:withMessage:sender:),operationQ,message,sender];
 
+        });
+    }else{
+        [self performLogSelector:@selector(logOperationQueue:withMessage:sender:),operationQ,message,sender];
+
+    }
 }
 
 
@@ -477,18 +659,30 @@ static dispatch_queue_t logQueue;
 }
 
 +(void)logReceivedFromURL:(NSURL*)url data:(id)data sender:(id)sender{
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logReceivedFromURL:data:sender:),url,data,sender];
+
+        });
+    }else{
         [self performLogSelector:@selector(logReceivedFromURL:data:sender:),url,data,sender];
-    });
+    }
 }
 
 //--------------------------------------------------------
 #pragma mark - Search, Filter, Compare
 //--------------------------------------------------------
 +(void)logPredicate:(NSPredicate *)predicate withResult:(NSArray *)result sender:(id)sender{
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logPredicate:withResult:sender:),predicate,result,sender];
+        });
+    }else{
         [self performLogSelector:@selector(logPredicate:withResult:sender:),predicate,result,sender];
-    });
+
+    }
 }
 
 +(void)logSearchString:(NSString*)string sender:(id)sender{
@@ -496,17 +690,27 @@ static dispatch_queue_t logQueue;
 }
 
 +(void)logComparisonWithObjectA:(id)objectA objectB:(id)objectB sender:(id)sender{
-    dispatch_async(logQueue, ^{
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            
+        });
+    }else{
         [self performLogSelector:@selector(logComparisonWithObjectA:objectB:sender:),objectA,objectB,sender];
-    });
 
+    }
 }
 
 +(void)logEqualityWithObjectA:(id)objectA objectB:(id)objectB sender:(id)sender{
-    dispatch_async(logQueue, ^{
-        [self performLogSelector:@selector(logEqualityWithObjectA:objectB:sender:),objectA,objectB,sender];
-    });
 
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logEqualityWithObjectA:objectB:sender:),objectA,objectB,sender];
+        });
+    }else{
+        [self performLogSelector:@selector(logEqualityWithObjectA:objectB:sender:),objectA,objectB,sender];
+    }
 }
 
 //======================================================
@@ -582,7 +786,7 @@ static dispatch_queue_t logQueue;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     
-    dispatch_async(logQueue, ^{
+    dispatch_block_t block = ^{
         
         KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
         if ([self shouldLogToConsole]) {
@@ -609,9 +813,18 @@ static dispatch_queue_t logQueue;
                 [config.serviceLogger performSelector:selector withObject:object withObject:sender];
             }
         }
-    });
-#pragma clang diagnostic pop
+    };
     
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            block();
+        });
+    }else{
+        block();
+    }
+#pragma clang diagnostic pop
+
 }
 
 //--------------------------------------------------------

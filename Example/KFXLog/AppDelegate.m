@@ -26,8 +26,8 @@
 
 
 #import "AppDelegate.h"
-#import "KFXLogConfigurator.h"
-#import "KFXLog.h"
+#import <KFXLog/KFXLogConfigurator.h>
+#import <KFXLog/KFXLog.h>
 #import "DEMOServiceLogger.h"
 
 @interface AppDelegate ()
@@ -60,6 +60,7 @@
     config.adHocLogMediums =  KFXLogMediumFile | KFXLogMediumAlert;
     config.releaseLogMediums = KFXLogMediumFile | KFXLogMediumService;
     config.shouldLogUncaughtExceptions = YES;
+    config.shouldLogOnBackgroundQueue = NO;
     
     // 3.
     // ## Log Descriptors ##

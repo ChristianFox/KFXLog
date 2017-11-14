@@ -53,6 +53,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL shouldCatchUncaughtExceptions DEPRECATED_ATTRIBUTE;
 /// If YES then uncaught exceptions will be logged
 @property (nonatomic) BOOL shouldLogUncaughtExceptions;
+/// If YES then log processing will be moved to a private bg queue, if NO the all log processing will take place on whichever quere the log method was originally called on. Defaults to NO;
+@property (nonatomic) BOOL shouldLogOnBackgroundQueue;
 
 // # Log Type descriptors - (Lazily loaded except serviceLogDesciptor) #
 /// The descriptor for when using basic console logging (aka NSLog)
