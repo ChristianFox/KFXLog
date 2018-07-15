@@ -56,7 +56,6 @@
 //--------------------------------------------------------
 -(void)logConfiguredObject;
 -(void)logInitilisedObject;
--(void)logWillDeallocateObject;
 
 //--------------------------------------------------------
 #pragma mark - Method Lifecycle Logs

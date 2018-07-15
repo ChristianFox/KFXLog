@@ -12,7 +12,7 @@ All the configuration is set in the AppDelegate and you can play around with the
 
 
 ## Requirements
-iOS 8+
+iOS 8.2+
 
 Xcode 7+
 

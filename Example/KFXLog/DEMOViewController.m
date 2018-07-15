@@ -86,7 +86,6 @@
     [self.logExamples logException];
     [self.logExamples logConfiguredObject];
     [self.logExamples logInitilisedObject];
-    [self.logExamples logWillDeallocateObject];
     [self.logExamples logMethodStart];
     [self.logExamples logMethodEnd];
     [self.logExamples logUIEvent];

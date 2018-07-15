@@ -173,10 +173,6 @@
 
 }
 
--(void)logWillDeallocateObject{
-    [KFXLog logWillDeallocateObject:self];
-
-}
 
 //--------------------------------------------------------
 #pragma mark - Method Lifecycle Logs

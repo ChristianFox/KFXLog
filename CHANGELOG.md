@@ -1,6 +1,8 @@
 
 # Change Log #
 
+## v1.4.0 | Removed -logWillDeallocateObject:
+
 ## v1.3.1 - bug fixes
 
 ## v1.3.0

@@ -137,7 +137,7 @@
             break;
         }
         case KFXLogTypeSuccess: {
-            prefix = @"SUCCESS";
+            prefix = @"SUCCESS?";
             break;
         }
         case KFXLogTypeValidity: {

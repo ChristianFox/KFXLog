@@ -66,8 +66,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)logInitilisedObject:(id)object;
 /// Log an object that will be deallocated with the prefix WILL DEALLOC. Intended to be called from the object's -dealloc method so no need to include the sender.
 -(void)logWillDeallocateObjectDescription:(NSString*)objectDescription;
-/// Log an object that will be deallocated with the prefix WILL DEALLOC. Intended to be called from the object's -dealloc method so no need to include the sender.
--(void)logWillDeallocateObject:(id)object DEPRECATED_ATTRIBUTE;
 
 
 //--------------------------------------------------------

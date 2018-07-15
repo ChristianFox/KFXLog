@@ -124,10 +124,6 @@
     [self logMessage:objectDescription withLogType:KFXLogTypeWillDeallocateObject sender:nil];
 }
 
--(void)logWillDeallocateObject:(id)object DEPRECATED_ATTRIBUTE{
-    NSString *message = [NSString stringWithFormat:@"Class: %@; Description: %@",NSStringFromClass([object class]),object];
-    [self logMessage:message withLogType:KFXLogTypeWillDeallocateObject sender:nil];
-}
 
 //--------------------------------------------------------
 #pragma mark - Method Lifecycle Logs
