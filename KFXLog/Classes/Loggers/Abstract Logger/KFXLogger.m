@@ -350,7 +350,12 @@
     BOOL success = [successNum boolValue];
     NSString *fullMessage = [NSString stringWithFormat:@"%@; %@",success ? @"Successful" : @"Failed",message];
     [self logMessage:fullMessage withLogType:KFXLogTypeSuccess sender:sender];
+}
 
+-(void)logResult:(NSNumber*)resultNum withMessage:(NSString*)message sender:(id)sender{
+    BOOL result = [resultNum boolValue];
+    NSString *fullMessage = [NSString stringWithFormat:@"%@; %@",result ? @"Successful" : @"Failed",message];
+    [self logMessage:fullMessage withLogType:KFXLogTypeResult sender:sender];
 }
 
 -(void)logValidity:(NSNumber*)isValidNum ofObject:(id)object sender:(id)sender{

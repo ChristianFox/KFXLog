@@ -95,6 +95,7 @@
     [self.logExamples logNumberChanged];
     [self.logExamples logProgress];
     [self.logExamples logSuccess];
+    [self.logExamples logResult];
     [self.logExamples logValidity];
     [self.logExamples logBlockStart];
     [self.logExamples logBlockEnd];
@@ -121,6 +122,7 @@
     [self.logExamples logUIEventFullTests];
     [self.logExamples logProgressFullTests];
     [self.logExamples logSuccessFullTests];
+    [self.logExamples logResultFullTests];
     [self.logExamples logValidityFullTests];
     [self.logExamples logThreadFullTests];
     [self.logExamples logQueueFullTests];

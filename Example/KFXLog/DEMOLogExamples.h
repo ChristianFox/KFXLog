@@ -99,9 +99,11 @@
 //--------------------------------------------------------
 -(void)logProgress;
 -(void)logSuccess;
+-(void)logResult;
 -(void)logValidity;
 -(void)logProgressFullTests;
 -(void)logSuccessFullTests;
+-(void)logResultFullTests;
 -(void)logValidityFullTests;
 
 

@@ -122,7 +122,8 @@ typedef NS_OPTIONS(unsigned long long, KFXLogType) {
     KFXLogTypeEquality              = 1ULL << 32,
     KFXLogTypeUncaughtException     = 1ULL << 33,
     KFXLogTypeNotice                = 1ULL << 34,
-    KFXLogTypeOperationQueue        = 1ULL << 35
+    KFXLogTypeOperationQueue        = 1ULL << 35,
+    KFXLogTypeResult                = 1ULL << 36
 };
 
 

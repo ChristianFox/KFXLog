@@ -40,13 +40,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// Log a message with the prefix INFO by passing a format string, optionally supply the sender.
 +(void)logInfoWithSender:(id __nullable)sender format:(NSString*__nullable)format,...;
 /// Log a message with the prefix INFO, optionally supply the sender.
-+(void)logInfo:(NSString*)message sender:(id __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logInfo:(NSString*)message sender:(id __nullable)sender ;
 
 #pragma mark NOTICE
 /// Log a message with the prefix NOTICE by passing a format string
 +(void)logNotice:(NSString*__nullable)format,...;
 /// Log a message with the prefix NOTICE by passing a format string, optionally supply the sender.
 +(void)logNoticeWithSender:(id __nullable)sender format:(NSString*__nullable)format,...;
+/// Log a message with the prefix NOTICE, optionally supply the sender.
++(void)logNotice:(NSString*)message sender:(id __nullable)sender ;
 
 #pragma mark WARNING
 /// Log a message with the prefix WARNING by passing a format string
@@ -54,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Log a message with the prefix INFO by passing a format string, optionally supply the sender.
 +(void)logWarningWithSender:(id __nullable)sender format:(NSString*__nullable)format,...;
 /// Log a message with the prefix WARNING, optionally supply the sender.
-+(void)logWarning:(NSString*)message sender:(id __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logWarning:(NSString*)message sender:(id __nullable)sender;
 
 #pragma mark FAIL
 /// Log a message with the prefix FAIL by passing a format string
@@ -62,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Log a message with the prefix FAIL by passing a format string, optionally supply the sender.
 +(void)logFailWithSender:(id __nullable)sender format:(NSString*__nullable)format,...;
 /// Log a message with the prefix FAIL, optionally supply the sender.
-+(void)logFail:(NSString*)message sender:(id __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logFail:(NSString*)message sender:(id __nullable)sender;
 
 #pragma mark Custom Prefix
 /// Log a message with a custom prefix by passing a format string
@@ -70,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// Log a message with a custom prefix by passing a format string, optionally supply the sender.
 +(void)logWithCustomPrefix:(NSString*__nullable)prefix sender:(id __nullable)sender format:(NSString*__nullable)format,...;
 /// Log a message with a custom prefix, optionally supply the sender.
-+(void)logWithCustomPrefix:(NSString*)prefix message:(NSString*)message sender:(id __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logWithCustomPrefix:(NSString*)prefix message:(NSString*)message sender:(id __nullable)sender;
 
 //--------------------------------------------------------
 #pragma mark - Errors & Exceptions
@@ -107,7 +109,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// For logging any UI Events with the prefix UI EVENT by passing a format string. Optionally supply the sender.
 +(void)logUIEventWithSender:(id __nullable)sender format:(NSString*__nullable)format,...;
 /// For logging any UI Events with the prefix UI EVENT. Optionally supply the sender.
-+(void)logUIEvent:(NSString*)message sender:(id __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logUIEvent:(NSString*)message sender:(id __nullable)sender;
 
 //--------------------------------------------------------
 #pragma mark - Notification Logs
@@ -120,13 +122,13 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)logNotificationReceived:(NSNotification*)note sender:(id __nullable)sender;
 
 //--------------------------------------------------------
-#pragma mark - Value Lifecycle Logs
+#pragma mark - Value Change Logs
 //--------------------------------------------------------
 /// Logs the details of an object when a value has changed. Prints details of the object using .description.
 +(void)logObjectChangeAtKeyPath:(NSString*)keyPath oldValue:(id)oldValue newValue:(id)newValue sender:(id __nullable)sender;
+
 /// Logs the details of an NSNumber when it's value has changed. Prints details of the object using .description.
 +(void)logNumberChangedAtKeyPath:(NSString*)keyPath oldNumber:(NSNumber*)oldNumber newNumber:(NSNumber*)newNumber sender:(id __nullable)sender;
-// TODO: add log for NSValues did change
 
 
 //--------------------------------------------------------
@@ -160,15 +162,22 @@ NS_ASSUME_NONNULL_BEGIN
 /// Log a progress value with the prefix PROGRESS, optionally pass a format string and the sender.
 +(void)logProgress:(double)progress withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;
 /// Log a progress value with the prefix PROGRESS, optionally pass a message and the sender.
-+(void)logProgress:(double)progress withMessage:(NSString*__nullable)message sender:(id  __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logProgress:(double)progress withMessage:(NSString*__nullable)message sender:(id  __nullable)sender;
+
 /// Log the success of some event with the prefix SUCCESS, optionally pass a format string and the sender.
 +(void)logSuccess:(BOOL)success withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;
 /// Log the success of some event with the prefix SUCCESS, optionally pass a message and the sender.
-+(void)logSuccess:(BOOL)success withMessage:(NSString*__nullable)message sender:(id  __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logSuccess:(BOOL)success withMessage:(NSString*__nullable)message sender:(id  __nullable)sender;
+
+/// Log the result of some event with the prefix RESULT, optionally pass a format string and the sender.
++(void)logResult:(BOOL)result withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;
+/// Log the result of some event with the prefix RESULT, optionally pass a message and the sender.
++(void)logResult:(BOOL)result withMessage:(NSString*__nullable)message sender:(id  __nullable)sender;
+
 /// Log the validity of some object with the prefix VALIDITY, optionally pass a format string and the sender.
 +(void)logValidity:(BOOL)isValid ofObject:(id __nullable)object sender:(id  __nullable)sender format:(NSString*__nullable)format,...;
 /// Log the validity of some object with the prefix VALIDITY, optionally pass the sender.
-+(void)logValidity:(BOOL)isValid ofObject:(id)object sender:(id  __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logValidity:(BOOL)isValid ofObject:(id)object sender:(id  __nullable)sender;
 
 
 //--------------------------------------------------------
@@ -185,17 +194,17 @@ NS_ASSUME_NONNULL_BEGIN
 /// Log an NSThread with the Prefix THREAD. Optionally pass a format string and the sender. Logs: state, priority & isMain.
 +(void)logThread:(NSThread* __nullable)thread withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;
 /// Log an NSThread with the Prefix THREAD. Optionally pass a message and the sender. Logs state, priority & isMain.
-+(void)logThread:(NSThread*)thread withMessage:(NSString*__nullable)message sender:(id  __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logThread:(NSThread*)thread withMessage:(NSString*__nullable)message sender:(id  __nullable)sender;
 
 /// Log an dispatch queue with the Prefix QUEUE, as I can't access the queue name from the queue you need to pass that in manually as a NSString. Optionally pass a format string and the sender
 +(void)logQueue:(NSString*__nullable)queueName withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;
 /// Log an dispatch queue with the Prefix QUEUE, as I can't access the queue name from the queue you need to pass that in manually as a NSString. Optionally pass a message and the sender
-+(void)logQueue:(NSString*)queueName withMessage:(NSString*__nullable)message sender:(id  __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logQueue:(NSString*)queueName withMessage:(NSString*__nullable)message sender:(id  __nullable)sender;
 /// Log an NSOperation with the Prefix OPERATION. Optionally pass a format string and the sender. Logs name, state, priority & dependencies count
 
 +(void)logOperation:(NSOperation*__nullable)operation withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;
 /// Log an NSOperation with the Prefix OPERATION. Optionally pass a message and the sender. Logs name, state, priority & dependencies count
-+(void)logOperation:(NSOperation*)operation withMessage:(NSString*__nullable)message sender:(id  __nullable)sender DEPRECATED_ATTRIBUTE;
++(void)logOperation:(NSOperation*)operation withMessage:(NSString*__nullable)message sender:(id  __nullable)sender;
 
 /// Log an NSOperationQueue with the Prefix OPERATION_QUEUE. Optionally pass a format string and the sender.
 +(void)logOperationQueue:(NSOperationQueue*__nullable)operationQ withSender:(id  __nullable)sender format:(NSString*__nullable)format,...;

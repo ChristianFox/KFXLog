@@ -67,7 +67,7 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		674A7B302F6823AAED549105 /* Pods_KFXLog_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KFXLog_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		9D213851370A5369E7CAA0F7 /* KFXLog.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KFXLog.podspec; path = ../KFXLog.podspec; sourceTree = "<group>"; };
+		9D213851370A5369E7CAA0F7 /* KFXLog.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KFXLog.podspec; path = ../KFXLog.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AB03F765522EE72F4A29468E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		DBB6EE4F1DA2709300221AA9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DBB6EE581DA3A8A400221AA9 /* DEMOLogExamples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEMOLogExamples.h; sourceTree = "<group>"; };

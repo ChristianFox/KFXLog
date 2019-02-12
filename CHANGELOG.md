@@ -1,6 +1,10 @@
 
 # Change Log #
 
+## v1.5.0 | Improved swift support
+- Un-deprecated methods that were previously deprecated in v1.1.0. These were methods that took a string argument but were superseeded by methods that took a format string argument. These methods port nicely to swift so have been re-precated(?).  
+- Added +logResult as an alternative to +logSuccess
+
 ## v1.4.0 | Removed -logWillDeallocateObject:
 
 ## v1.3.1 - bug fixes

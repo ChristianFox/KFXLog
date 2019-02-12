@@ -135,6 +135,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)logProgress:(NSNumber*)progress withMessage:(NSString*)message sender:(id  __nullable)sender;
 /// Log the success of some event with the prefix SUCCESS, optionally pass a message and the sender.
 -(void)logSuccess:(NSNumber*)successNum withMessage:(NSString*)message sender:(id  __nullable)sender;
+/// Log the result of some event with the prefix RESULT, optionally pass a message and the sender.
+-(void)logResult:(NSNumber*)resultNum withMessage:(NSString*)message sender:(id  __nullable)sender;
 /// Log the validity of some object with the prefix VALIDITY, optionally pass the object and the sender.
 -(void)logValidity:(NSNumber*)isValidNum ofObject:(id)object sender:(id  __nullable)sender;
 

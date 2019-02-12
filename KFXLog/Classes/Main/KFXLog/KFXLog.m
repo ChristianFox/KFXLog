@@ -37,8 +37,6 @@ static dispatch_queue_t logQueue;
 
 @implementation KFXLog
 
-
-
 //======================================================
 #pragma mark - ** Public Methods **
 //======================================================
@@ -75,9 +73,8 @@ static dispatch_queue_t logQueue;
     [self logToSelector:@selector(logInfo:sender:) withObject:message sender:sender];
 }
 
-+(void)logInfo:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
++(void)logInfo:(NSString*)message sender:(id)sender {
     [self logToSelector:@selector(logInfo:sender:) withObject:message sender:sender];
-    
 }
 
 #pragma mark NOTICE
@@ -101,8 +98,12 @@ static dispatch_queue_t logQueue;
         va_end(args);
     }
     [self logToSelector:@selector(logNotice:sender:) withObject:message sender:sender];
-
 }
+
++(void)logNotice:(NSString*)message sender:(id)sender {
+    [self logToSelector:@selector(logNotice:sender:) withObject:message sender:sender];
+}
+
 
 #pragma mark WARNING
 +(void)logWarning:(NSString *)format, ...{
@@ -127,7 +128,7 @@ static dispatch_queue_t logQueue;
     [self logToSelector:@selector(logWarning:sender:) withObject:message sender:sender];
 }
 
-+(void)logWarning:(NSString *)message sender:(id)sender DEPRECATED_ATTRIBUTE{
++(void)logWarning:(NSString *)message sender:(id)sender{
     [self logToSelector:@selector(logWarning:sender:) withObject:message sender:sender];
 }
 
@@ -154,7 +155,7 @@ static dispatch_queue_t logQueue;
     [self logToSelector:@selector(logFail:sender:) withObject:message sender:sender];
 }
 
-+(void)logFail:(NSString *)message sender:(id)sender DEPRECATED_ATTRIBUTE{
++(void)logFail:(NSString *)message sender:(id)sender{
     [self logToSelector:@selector(logFail:sender:) withObject:message sender:sender];
 }
 
@@ -196,7 +197,7 @@ static dispatch_queue_t logQueue;
     }
 }
 
-+(void)logWithCustomPrefix:(NSString *)prefix message:(NSString *)message sender:(id)sender DEPRECATED_ATTRIBUTE{
++(void)logWithCustomPrefix:(NSString *)prefix message:(NSString *)message sender:(id)sender{
     KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
     if (config.shouldLogOnBackgroundQueue) {
         dispatch_async(logQueue, ^{
@@ -453,6 +454,41 @@ static dispatch_queue_t logQueue;
     }
 }
 
++(void)logResult:(BOOL)result withSender:(id)sender format:(NSString *)format, ...{
+    NSString *message;
+    if (format != nil) {
+        va_list args;
+        va_start(args, format);
+        message = [[NSString alloc]initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logResult:withMessage:sender:),@(result),message,sender];
+            
+        });
+    }else{
+        [self performLogSelector:@selector(logResult:withMessage:sender:),@(result),message,sender];
+        
+    }
+}
+
++(void)logResult:(BOOL)result withMessage:(NSString*)message sender:(id)sender{
+    
+    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+    if (config.shouldLogOnBackgroundQueue) {
+        dispatch_async(logQueue, ^{
+            [self performLogSelector:@selector(logResult:withMessage:sender:),@(result),message,sender];
+            
+        });
+    }else{
+        [self performLogSelector:@selector(logResult:withMessage:sender:),@(result),message,sender];
+        
+    }
+}
+
 +(void)logValidity:(BOOL)isValid ofObject:(id)object sender:(id)sender format:(NSString *)format, ...{
     NSString *message;
     if (format != nil) {
@@ -544,7 +580,7 @@ static dispatch_queue_t logQueue;
     }
 }
 
-+(void)logThread:(NSThread*)thread withMessage:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
++(void)logThread:(NSThread*)thread withMessage:(NSString*)message sender:(id)sender{
     KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
     if (config.shouldLogOnBackgroundQueue) {
         dispatch_async(logQueue, ^{
@@ -578,7 +614,7 @@ static dispatch_queue_t logQueue;
     }
 }
 
-+(void)logQueue:(NSString*)queueName withMessage:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
++(void)logQueue:(NSString*)queueName withMessage:(NSString*)message sender:(id)sender{
     KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
     if (config.shouldLogOnBackgroundQueue) {
         dispatch_async(logQueue, ^{
@@ -611,7 +647,7 @@ static dispatch_queue_t logQueue;
     }
 }
 
-+(void)logOperation:(NSOperation*)operation withMessage:(NSString*)message sender:(id)sender DEPRECATED_ATTRIBUTE{
++(void)logOperation:(NSOperation*)operation withMessage:(NSString*)message sender:(id)sender{
     KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
     if (config.shouldLogOnBackgroundQueue) {
         dispatch_async(logQueue, ^{

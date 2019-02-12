@@ -47,6 +47,7 @@
      3. Customise the descriptors you need to
      4. Create an instance of your service logger class if you are using one and set the serviceLogger property on the configurator
      5. Print a settings summary if you want to
+     6. Purge old log files if needed/desired
      ***/
     
     // 1.

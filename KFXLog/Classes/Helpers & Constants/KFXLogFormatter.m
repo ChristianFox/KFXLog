@@ -200,6 +200,10 @@
             prefix = @"OPERATION_QUEUE";
             break;
         }
+        case KFXLogTypeResult: {
+            prefix = @"RESULT";
+            break;
+        }
     }
     
     NSString *fullPrefix = [NSString stringWithFormat:@"%@%@%@",descriptor.prefixBookendFront,prefix,descriptor.prefixBookendBack];

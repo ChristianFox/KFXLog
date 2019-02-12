@@ -32,7 +32,6 @@
 @implementation DEMOLogExamples
 
 
-
 //======================================================
 #pragma mark - ** Public Methods **
 //======================================================
@@ -42,6 +41,7 @@
 -(void)logInfo{
     [KFXLog logInfo:@"This is an info log with an arg: %@",[NSDate date]];
     [KFXLog logInfoWithSender:self format:@"This is an info log with an arg: %@",[NSDate date]];
+    
 }
 
 -(void)logNotice{
@@ -66,7 +66,6 @@
     [KFXLog logInfoWithSender:self format:nil];
     [KFXLog logInfoWithSender:nil format:@"This is some info with a number: %@",@665];
     [KFXLog logInfoWithSender:self format:@"Info without args"];
-
 }
 
 -(void)logNoticeFullTests{
@@ -75,7 +74,6 @@
     [KFXLog logNoticeWithSender:nil format:nil];
     [KFXLog logNoticeWithSender:self format:nil];
     [KFXLog logNoticeWithSender:nil format:@"If you notice this notice you will notice that is is not worth %@",@"noticing"];
-
 }
 
 -(void)logWarningFullTests{
@@ -328,8 +326,13 @@
 }
 
 -(void)logSuccess{
-    [KFXLog logSuccess:NO withSender:self format:@"Did attempt download"];
-    [KFXLog logSuccess:YES withSender:self format:@"Did attempt upload"];
+    [KFXLog logSuccess:NO withSender:self format:@"Did attempt something"];
+    [KFXLog logSuccess:YES withSender:self format:@"Did attempt something else"];
+}
+
+-(void)logResult{
+    [KFXLog logResult:NO withSender:self format:@"Did attempt something"];
+    [KFXLog logResult:YES withSender:self format:@"Did attempt something else"];
 }
 
 -(void)logValidity{
@@ -350,6 +353,14 @@
     [KFXLog logSuccess:NO withSender:self format:nil];
     [KFXLog logSuccess:YES withSender:self format:@"Save to disk"];
 
+}
+
+-(void)logResultFullTests{
+    [KFXLog logResult:NO withSender:nil format:nil];
+    [KFXLog logResult:YES withSender:nil format:@"Attempted to do %@",@"xyz"];
+    [KFXLog logResult:NO withSender:self format:nil];
+    [KFXLog logResult:YES withSender:self format:@"atempted to do something"];
+    
 }
 
 -(void)logValidityFullTests{
