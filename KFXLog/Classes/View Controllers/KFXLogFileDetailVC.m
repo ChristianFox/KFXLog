@@ -181,18 +181,10 @@
                                 @"prevButton":self.previousResultButton,
                                 @"nextButton":self.nextResultButton
                                 };
-    CGFloat searchBarOriginY = 0.0;
-    if (self.navigationController.navigationBar != nil) {
-        searchBarOriginY += self.navigationController.navigationBar.bounds.size.height;
-    }
-    if (![UIApplication sharedApplication].isStatusBarHidden) {
-        searchBarOriginY += 20.0;
-    }
     NSDictionary *metrics = @{
-                              @"searchBarY":@(searchBarOriginY),
+                              @"searchBarY":@(0),
                               @"labelHeight":@(30)
                               };
-    
     // ## Horizontal ##
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[searchBar]|"
                                                                       options:kNilOptions
@@ -237,24 +229,6 @@
                                                                       metrics:nil
                                                                         views:viewsDict]];
 }
-
--(void)updateViewConstraints{
-
-    /*
-     Update the constraint for the search bar origin Y based on if there is a status bar and navigation bar visible - keep search bar flush to the top subview
-    */
-    CGFloat searchBarOriginY = 0.0;
-    if (self.navigationController.navigationBar != nil) {
-        searchBarOriginY += self.navigationController.navigationBar.bounds.size.height;
-    }
-    if (![UIApplication sharedApplication].isStatusBarHidden) {
-        searchBarOriginY += 20.0;
-    }
-    self.searchBarOriginY.constant = searchBarOriginY;
-    
-    [super updateViewConstraints];
-}
-
 
 
 //--------------------------------------------------------
@@ -358,20 +332,18 @@
     }
 }
 
--(void)scrollTextViewToTextInRange:(NSRange)range{
+- (void)scrollTextViewToTextInRange:(NSRange)range {
 
     [self.textView setSelectedRange:range];
     
     CGRect textRect = [self.textView firstRectForRange:self.textView.selectedTextRange];
-    [KFXLog logInfo:@"TextRect: %@",NSStringFromCGRect(textRect)];
     if (!CGRectContainsRect(self.textView.bounds, textRect)) {
         [self.textView scrollRectToVisible:textRect
                                   animated:YES];
-
     }
     
     [self.textView setSelectedRange:NSMakeRange(0, 0)];
-    }
+}
 
 //======================================================
 #pragma mark - ** Protocol Methods **
