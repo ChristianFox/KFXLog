@@ -210,7 +210,7 @@
                                                             toItem:self.view
                                                          attribute:NSLayoutAttributeTop
                                                         multiplier:1.0
-                                                          constant:searchBarOriginY];
+                                                          constant:0];
     [self.view addConstraint:self.searchBarOriginY];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[searchBar(50)][resultBar(45)][textView]|"
                                                                       options:kNilOptions
