@@ -184,15 +184,8 @@
                     }
                 }else{
                     
-                    NSMutableArray *mutContents = [NSMutableArray arrayWithCapacity:contents.count ];
-                    
-                    for (NSString *fileName in contents.reverseObjectEnumerator.allObjects) {
-                        if (![fileName containsString:@"sqlite"]) {
-                            [mutContents addObject:fileName];
-                        }
-                    }
-                    
-                    _tableData = [mutContents copy];
+					contents = [contents sortedArrayUsingSelector:@selector(compare:)];
+					_tableData = contents.reverseObjectEnumerator.allObjects;
                 }
             }
         }else{
