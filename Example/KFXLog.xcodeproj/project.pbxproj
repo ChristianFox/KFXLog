@@ -368,16 +368,18 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-KFXLog_Example/Pods-KFXLog_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-KFXLog_Example/Pods-KFXLog_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KFXLog/KFXLog.framework",
+				"${BUILT_PRODUCTS_DIR}/KFXLogUI/KFXLogUI.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KFXLog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KFXLogUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KFXLog_Example/Pods-KFXLog_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KFXLog_Example/Pods-KFXLog_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -540,7 +542,7 @@
 				GCC_PREFIX_HEADER = "KFXLog/KFXLog-Prefix.pch";
 				INFOPLIST_FILE = "KFXLog/KFXLog-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -559,7 +561,7 @@
 				GCC_PREFIX_HEADER = "KFXLog/KFXLog-Prefix.pch";
 				INFOPLIST_FILE = "KFXLog/KFXLog-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

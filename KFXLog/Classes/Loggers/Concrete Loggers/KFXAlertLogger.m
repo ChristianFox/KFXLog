@@ -40,8 +40,8 @@
 #pragma mark - Initilisers
 //--------------------------------------------------------
 +(instancetype)alertLogger{
-    KFXAlertLogger *logger = [[[self class]alloc]init];
-    return logger;
+	KFXAlertLogger *logger = [[[self class]alloc]init];
+	return logger;
 }
 
 
@@ -52,55 +52,58 @@
 #pragma mark - KFXLogger_Protected
 //--------------------------------------------------------
 -(void)logMessage:(NSString*)message withLogType:(KFXLogType)logType prefix:(NSString*)prefix sender:(id)sender{
-
-    
-    if ([sender isKindOfClass:[UIViewController class]]) {
-        KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
-        KFXAlertLogDescriptor *descriptor = config.alertLogDescriptor;
-        
-        if (descriptor.whitelist & logType) {
-            [self logMessage:message withPrefix:prefix sender:sender];
-        }
-    }
+	
+	
+	if ([sender isKindOfClass:[UIViewController class]]) {
+		KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+		KFXAlertLogDescriptor *descriptor = config.alertLogDescriptor;
+		
+		if (descriptor.whitelist & logType) {
+			[self logMessage:message withPrefix:prefix sender:sender];
+		}
+	}
 }
 
 -(KFXLogDescriptor *)logDescriptor{
-    return [KFXLogConfigurator sharedConfigurator].alertLogDescriptor;
+	return [KFXLogConfigurator sharedConfigurator].alertLogDescriptor;
 }
 
 //======================================================
 #pragma mark - ** Private Methods **
 //======================================================
 -(void)logMessage:(NSString*)message withPrefix:(NSString*)prefix sender:(UIViewController*)sender{
-    
-    KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
-    KFXAlertLogDescriptor *descriptor = config.alertLogDescriptor;
-    NSString *fullMessage;
-    if (descriptor.shouldFormatMessage) {
-        fullMessage = [config.logFormatter formatMessage:message
-                                              withPrefix:@"" // Because the prefix is used as the alert title
-                                                  sender:sender
-                                  formattedLogDescriptor:descriptor];
-    }else{
-        fullMessage = message;
-    }
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-
-        if (sender.isViewLoaded && sender.view.window != nil) {
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:prefix
-                                                                           message:fullMessage
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            NSString *okay = NSLocalizedStringWithDefaultValue(@"com.kfxtech.KFXLogger.alertLogger.okay", @"Localizable", [NSBundle mainBundle], @"Okay", @"Okay, accept, approve, agree");
-            UIAlertAction *okayAction = [UIAlertAction actionWithTitle:okay
-                                                                 style:UIAlertActionStyleDefault
-                                                               handler:nil];
-            [alert addAction:okayAction];
-            [sender presentViewController:alert animated:YES completion:nil];
-        }
-    });
-    
+	
+	KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
+	KFXAlertLogDescriptor *descriptor = config.alertLogDescriptor;
+	NSString *fullMessage;
+	if (descriptor.shouldFormatMessage) {
+		fullMessage = [config.logFormatter formatMessage:message
+											  withPrefix:@"" // Because the prefix is used as the alert title
+												  sender:sender
+								  formattedLogDescriptor:descriptor];
+	}else{
+		fullMessage = message;
+	}
+	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		
+		if (sender.isViewLoaded && sender.view.window != nil) {
+			
+#if !TARGET_OS_WATCH
+			
+			UIAlertController *alert = [UIAlertController alertControllerWithTitle:prefix
+																		   message:fullMessage
+																	preferredStyle:UIAlertControllerStyleAlert];
+			NSString *okay = NSLocalizedStringWithDefaultValue(@"com.kfxtech.KFXLogger.alertLogger.okay", @"Localizable", [NSBundle mainBundle], @"Okay", @"Okay, accept, approve, agree");
+			UIAlertAction *okayAction = [UIAlertAction actionWithTitle:okay
+																 style:UIAlertActionStyleDefault
+															   handler:nil];
+			[alert addAction:okayAction];
+			[sender presentViewController:alert animated:YES completion:nil];
+		}
+#endif
+	});
+	
 }
 
 

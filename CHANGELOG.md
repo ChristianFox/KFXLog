@@ -1,6 +1,8 @@
 
 # Change Log #
 
+## v2.0.1 | Fixes Example project and makes KFXLog available on Apple Watch
+
 ## v2.0.0 | Removes UI classes - they are added to KFXLogUI pod
 
 ## v1.6.0 | Improvements to Log Files UI

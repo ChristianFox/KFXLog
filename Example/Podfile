@@ -4,7 +4,7 @@ platform :ios, '8.2'
 target 'KFXLog_Example' do
   pod 'KFXLog', :path => '../'
   
-#  pod 'KFXLogUI'
+  pod 'KFXLogUI'
 
   target 'KFXLog_Tests' do
     inherit! :search_paths

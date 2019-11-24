@@ -28,7 +28,7 @@
 #import "DEMOViewController.h"
 #import <KFXLog/KFXLog.h>
 #import <KFXLog/KFXLogConfigurator.h>
-#import <KFXLog/KFXLogFilesMasterTVC.h>
+#import <KFXLogUI/KFXLogFilesMasterTVC.h>
 #import "DEMOLogExamples.h"
 
 @interface DEMOViewController ()

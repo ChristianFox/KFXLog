@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KFXLog'
-  s.version          = '2.0.0'
+  s.version          = '2.0.1'
   s.summary          = 'KFXLog is a customisable logging library written in Objective-C.'
 
   s.description      = <<-DESC
@@ -21,7 +21,7 @@ Log messages are prefixed to make it easy to filter out the noise and focus on t
   s.author           = { 'Christian Fox' => 'christianfox@kfxtech.com' }
 
   s.ios.deployment_target = '8.2'
-  #s.watchos.deployment_target = '4.0'
+  s.watchos.deployment_target = '4.0'
 
   s.source_files = 'KFXLog/Classes/**/*'
   
