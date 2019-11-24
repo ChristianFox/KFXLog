@@ -29,7 +29,9 @@
 #import "KFXAlertLogDescriptor.h"
 #import "KFXLogConfigurator_Internal.h"
 #import "KFXLogFormatter.h"
+#if !TARGET_OS_WATCH
 @import UIKit.UIAlertController;
+#endif
 
 @implementation KFXAlertLogger
 
@@ -53,7 +55,7 @@
 //--------------------------------------------------------
 -(void)logMessage:(NSString*)message withLogType:(KFXLogType)logType prefix:(NSString*)prefix sender:(id)sender{
 	
-	
+#if !TARGET_OS_WATCH
 	if ([sender isKindOfClass:[UIViewController class]]) {
 		KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
 		KFXAlertLogDescriptor *descriptor = config.alertLogDescriptor;
@@ -62,6 +64,7 @@
 			[self logMessage:message withPrefix:prefix sender:sender];
 		}
 	}
+#endif
 }
 
 -(KFXLogDescriptor *)logDescriptor{
@@ -71,7 +74,9 @@
 //======================================================
 #pragma mark - ** Private Methods **
 //======================================================
--(void)logMessage:(NSString*)message withPrefix:(NSString*)prefix sender:(UIViewController*)sender{
+#if !TARGET_OS_WATCH
+-(void)logMessage:(NSString*)message withPrefix:(NSString*)prefix sender:(UIViewController*)sender {
+	
 	
 	KFXLogConfigurator *config = [KFXLogConfigurator sharedConfigurator];
 	KFXAlertLogDescriptor *descriptor = config.alertLogDescriptor;
@@ -89,7 +94,6 @@
 		
 		if (sender.isViewLoaded && sender.view.window != nil) {
 			
-#if !TARGET_OS_WATCH
 			
 			UIAlertController *alert = [UIAlertController alertControllerWithTitle:prefix
 																		   message:fullMessage
@@ -101,10 +105,9 @@
 			[alert addAction:okayAction];
 			[sender presentViewController:alert animated:YES completion:nil];
 		}
-#endif
 	});
-	
 }
+#endif
 
 
 
