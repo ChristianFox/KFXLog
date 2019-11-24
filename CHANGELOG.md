@@ -1,6 +1,7 @@
 
 # Change Log #
 
+
 ## v1.6.0 | Improvements to Log Files UI
 - Fixes log files not being displayed in order
 - Fixes search bar underlapping the navigation bar
