@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		01287DC49274DD9F22DCB58898C79C4F /* KFXLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EDBC881493BFD3E75A87A399B0BDED8A /* KFXLogger.m */; };
 		0874592F72270B226AF068ADB5D87F5E /* KFXAlertLogDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A06CFBA80342F659F1035E71325A96F /* KFXAlertLogDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0E5DB39B84E4EF4518E466A19C873845 /* KFXLogFileTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE6B7471DBFE61251B9D68B8BC75EA5 /* KFXLogFileTVCell.m */; };
 		0EAE9C9E40F011EB396357348FCE0A9D /* KFXBasicLogDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 65B5A34D4BD7BDFE27D89DF12C703DCA /* KFXBasicLogDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		170CA98EA5D2CEED5622F904352B3210 /* KFXLoggerInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = A0957901C1F63B5F3E654867521A4727 /* KFXLoggerInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18564C8E70FA6745CC17B244B4896277 /* KFXServiceLogDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C4CAAE1CB4AC7E074920867A6A47DA /* KFXServiceLogDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,13 +32,9 @@
 		782D4715FB975F65914B8E1B75DF4272 /* KFXServiceLoggerInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B00CB46B0A7E68514750CDB9D38167E /* KFXServiceLoggerInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C256CD5407474CF90BD9CB7F8360123 /* Pods-KFXLog_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BBCB4D1FCF6132D863EDED291A67794 /* Pods-KFXLog_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E6A0FD89D75142D24946CA596494710 /* KFXLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF6C66392EE3ED804094BB0B93E98C /* KFXLogFormatter.m */; };
-		8A99E933C6A551DCD05C52B48E6F7905 /* KFXLogFileTVCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 802C961217EEA89D224B3C2A76E2A7A3 /* KFXLogFileTVCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8EA4351388FEE445AAF906CC044F7052 /* KFXLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = ECDEE155990A9F23B50A27219B00D1BA /* KFXLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		921983B94D1031B72E1AEB01511C8414 /* KFXLogFileDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CB05FC707674ED46A315FDAB4E60193D /* KFXLogFileDetailVC.m */; };
 		955F8D983D227E7CB8C7AD6891A8F263 /* KFXConsoleLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 44B3FBB1BDDD78F9F9745234DFB70C26 /* KFXConsoleLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		987860EC8CABFDC303FAB8CDC05218A1 /* KFXFormattedLogDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F8C589E25057749645398C9EA167D21 /* KFXFormattedLogDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A3670801D63476A85A7335003A21F0F5 /* KFXLogFileDetailVC.h in Headers */ = {isa = PBXBuildFile; fileRef = E8FC2F0D453A9B2D449D2B6E6012E676 /* KFXLogFileDetailVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A7D0A9DF8D3D7FB9F739328E0BB880FA /* KFXLogFilesMasterTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 87BBE8290956243B77F5313EF00BC8DE /* KFXLogFilesMasterTVC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ACD89129CE86002955CC6CA22F5C066D /* KFXOptionsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D75E5486984D6893BE64F83AE786EB5C /* KFXOptionsReader.m */; };
 		AD99B44BF9F671FF7EA213A17903CCA7 /* KFXLog-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C84E6CBB41A8081A73DDDA7BF584E517 /* KFXLog-dummy.m */; };
 		B128E27FAB0AB16E7550D8DD3C6FDFEF /* KFXFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 52AE9B69A6B14FBCE57AC6079850BD39 /* KFXFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,7 +43,6 @@
 		CDF017EBAA1AAF96BAA8285F8B5D5223 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
 		D67E75C09592284DAEDF054A913E82E6 /* KFXLogDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 621DCCDB66A6108726AF42CF7AC958EF /* KFXLogDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB49B6F19C8A5F12EC595C634B91C851 /* KFXLogConfigurator_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B895217A63D59635FB124386415AC9C /* KFXLogConfigurator_Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DC7550DECD31A787D6D997870ECA87B9 /* KFXLogFilesMasterTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F0389690F5B0967EA09748E0E1F12A /* KFXLogFilesMasterTVC.m */; };
 		DDF7520CE14017B12987A9D675B67B68 /* KFXLog.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5268E4D8FFBC611D7D1AA1DCA72381 /* KFXLog.m */; };
 		DFD3923BC70293E20BD46AF4EABCF346 /* KFXCleanLogDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = B83C9AD8F415AD60795A376D858C01CE /* KFXCleanLogDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5D813F0549CEA0ACC39B23CD132692A /* KFXCleanLogDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5086E3A7971C028A003FC2C6C3310B /* KFXCleanLogDescriptor.m */; };
@@ -78,14 +72,13 @@
 
 /* Begin PBXFileReference section */
 		012F9EE0EC82F6C9ADD4C220604A20BA /* Pods-KFXLog_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KFXLog_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		0AE6B7471DBFE61251B9D68B8BC75EA5 /* KFXLogFileTVCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXLogFileTVCell.m; sourceTree = "<group>"; };
 		0B621D0D4174D28ECC8923711D35AE26 /* KFXServiceLogDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXServiceLogDescriptor.m; sourceTree = "<group>"; };
 		0E1233EB199F7C75AEF2601E1717EC1A /* KFXLoggerDefinitions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLoggerDefinitions.h; sourceTree = "<group>"; };
 		1B00CB46B0A7E68514750CDB9D38167E /* KFXServiceLoggerInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXServiceLoggerInterface.h; sourceTree = "<group>"; };
 		1C71F3513944392EF64749A1D56970B2 /* KFXFileLogDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXFileLogDescriptor.m; sourceTree = "<group>"; };
-		3374C2234D34F176361B30BC78448C1A /* KFXLog.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = KFXLog.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3374C2234D34F176361B30BC78448C1A /* KFXLog.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = KFXLog.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		36B2301D43A83DCC25D1DAABEF3744E2 /* Pods-KFXLog_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-KFXLog_Tests.modulemap"; sourceTree = "<group>"; };
-		407C2D6911EA9A40BC0C46C4670DEB2A /* KFXLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KFXLog.framework; path = KFXLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		407C2D6911EA9A40BC0C46C4670DEB2A /* KFXLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KFXLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4137C20EE49D1489A850F604707CAA9E /* KFXLogConfigurator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLogConfigurator.h; sourceTree = "<group>"; };
 		440957FA00A001F570FCCAD0938DB1A3 /* Pods-KFXLog_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KFXLog_Example.release.xcconfig"; sourceTree = "<group>"; };
 		44B3FBB1BDDD78F9F9745234DFB70C26 /* KFXConsoleLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXConsoleLogger.h; sourceTree = "<group>"; };
@@ -97,32 +90,29 @@
 		52AE9B69A6B14FBCE57AC6079850BD39 /* KFXFileLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXFileLogger.h; sourceTree = "<group>"; };
 		5459246696ABE22E0530AB0E02A2DCEF /* KFXFormattedLogDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXFormattedLogDescriptor.m; sourceTree = "<group>"; };
 		55C4CAAE1CB4AC7E074920867A6A47DA /* KFXServiceLogDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXServiceLogDescriptor.h; sourceTree = "<group>"; };
-		5A349324DC0E46EB9331EE094D6FA2B8 /* Pods_KFXLog_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KFXLog_Tests.framework; path = "Pods-KFXLog_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A349324DC0E46EB9331EE094D6FA2B8 /* Pods_KFXLog_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KFXLog_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E7CC10386675B5F4C86A091958F7042 /* KFXAlertLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXAlertLogger.m; sourceTree = "<group>"; };
 		60B906479B88FC15401FD735288ADB01 /* Pods-KFXLog_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KFXLog_Example-resources.sh"; sourceTree = "<group>"; };
 		621DCCDB66A6108726AF42CF7AC958EF /* KFXLogDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLogDescriptor.h; sourceTree = "<group>"; };
 		65B5A34D4BD7BDFE27D89DF12C703DCA /* KFXBasicLogDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXBasicLogDescriptor.h; sourceTree = "<group>"; };
-		66F0389690F5B0967EA09748E0E1F12A /* KFXLogFilesMasterTVC.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXLogFilesMasterTVC.m; sourceTree = "<group>"; };
 		69C80029817136573F9784DBC6B3035F /* KFXLogConfigurator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXLogConfigurator.m; sourceTree = "<group>"; };
 		6BBCB4D1FCF6132D863EDED291A67794 /* Pods-KFXLog_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KFXLog_Tests-umbrella.h"; sourceTree = "<group>"; };
 		6F5086E3A7971C028A003FC2C6C3310B /* KFXCleanLogDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXCleanLogDescriptor.m; sourceTree = "<group>"; };
 		7651EEBA2DEA7DFC326528410AC5869C /* Pods-KFXLog_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KFXLog_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		78D68120131AE27369879BE1B6E25112 /* Pods-KFXLog_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KFXLog_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		802C961217EEA89D224B3C2A76E2A7A3 /* KFXLogFileTVCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLogFileTVCell.h; sourceTree = "<group>"; };
 		864533B480A838501BFDE3392054D8D2 /* KFXFileLogDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXFileLogDescriptor.h; sourceTree = "<group>"; };
-		87BBE8290956243B77F5313EF00BC8DE /* KFXLogFilesMasterTVC.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLogFilesMasterTVC.h; sourceTree = "<group>"; };
 		8B895217A63D59635FB124386415AC9C /* KFXLogConfigurator_Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLogConfigurator_Internal.h; sourceTree = "<group>"; };
 		8D527C2838676E65CC915E53FF9CA809 /* KFXLogger_Protected.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLogger_Protected.h; sourceTree = "<group>"; };
 		8DF0B47E467F01CE9C3D76E9244AE22D /* Pods-KFXLog_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KFXLog_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8F8C589E25057749645398C9EA167D21 /* KFXFormattedLogDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXFormattedLogDescriptor.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		951BEB0A03E45EEAD08C6417F1853579 /* KFXLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLogFormatter.h; sourceTree = "<group>"; };
 		97AD31D11FBFF064B5FED0ABAFFD03F7 /* Pods-KFXLog_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KFXLog_Example-frameworks.sh"; sourceTree = "<group>"; };
 		97C249741F94794A49BC736467BC45B1 /* Pods-KFXLog_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KFXLog_Tests-resources.sh"; sourceTree = "<group>"; };
-		983D0A799A6D007F1BBA8C7AE4F88ABF /* Pods_KFXLog_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_KFXLog_Example.framework; path = "Pods-KFXLog_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		983D0A799A6D007F1BBA8C7AE4F88ABF /* Pods_KFXLog_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KFXLog_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A39976BBB72ADED250ADD6AAF27E2B /* KFXLog.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KFXLog.xcconfig; sourceTree = "<group>"; };
 		9A06CFBA80342F659F1035E71325A96F /* KFXAlertLogDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXAlertLogDescriptor.h; sourceTree = "<group>"; };
-		9E8CF42199359B0B2CC6C188B1A9DF75 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		9E8CF42199359B0B2CC6C188B1A9DF75 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9FFFB850C8E886D72CFCFFC3626EA27E /* Pods-KFXLog_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KFXLog_Example-umbrella.h"; sourceTree = "<group>"; };
 		A0957901C1F63B5F3E654867521A4727 /* KFXLoggerInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLoggerInterface.h; sourceTree = "<group>"; };
 		AF13DBFDB3278C66EA12346BC1052485 /* KFXAlertLogDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXAlertLogDescriptor.m; sourceTree = "<group>"; };
@@ -133,7 +123,6 @@
 		B83C9AD8F415AD60795A376D858C01CE /* KFXCleanLogDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXCleanLogDescriptor.h; sourceTree = "<group>"; };
 		BF91F314552602BD51AEE9BC1C04EB66 /* KFXLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = KFXLog.modulemap; sourceTree = "<group>"; };
 		C84E6CBB41A8081A73DDDA7BF584E517 /* KFXLog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KFXLog-dummy.m"; sourceTree = "<group>"; };
-		CB05FC707674ED46A315FDAB4E60193D /* KFXLogFileDetailVC.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXLogFileDetailVC.m; sourceTree = "<group>"; };
 		CB85D12B2D3B3E555ECE6A5BEB262FF7 /* KFXAlertLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXAlertLogger.h; sourceTree = "<group>"; };
 		D5810FF9AC1F72FABFE44D9A42F3DE55 /* Pods-KFXLog_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KFXLog_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -141,9 +130,8 @@
 		DBB486C04BB5442DBFDFC971EE2B13BB /* Pods-KFXLog_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KFXLog_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E0EB98A69E6AE43ECAE9BF5E0001435D /* KFXOptionsReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXOptionsReader.h; sourceTree = "<group>"; };
 		E3D7E56272C87BF6060C23BB0B4FAE2C /* KFXConsoleLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXConsoleLogger.m; sourceTree = "<group>"; };
-		E5AFCEA0F21E682550A0CF93E0901AC5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		E5AFCEA0F21E682550A0CF93E0901AC5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E5CC191F8432059A1A61F459AAE24FCD /* Pods-KFXLog_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-KFXLog_Example.modulemap"; sourceTree = "<group>"; };
-		E8FC2F0D453A9B2D449D2B6E6012E676 /* KFXLogFileDetailVC.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLogFileDetailVC.h; sourceTree = "<group>"; };
 		ECDEE155990A9F23B50A27219B00D1BA /* KFXLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = KFXLogger.h; sourceTree = "<group>"; };
 		ED5268E4D8FFBC611D7D1AA1DCA72381 /* KFXLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXLog.m; sourceTree = "<group>"; };
 		EDBC881493BFD3E75A87A399B0BDED8A /* KFXLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = KFXLogger.m; sourceTree = "<group>"; };
@@ -189,7 +177,6 @@
 				69C80029817136573F9784DBC6B3035F /* KFXLogConfigurator.m */,
 				8B895217A63D59635FB124386415AC9C /* KFXLogConfigurator_Internal.h */,
 			);
-			name = KFXLogConfigurator;
 			path = KFXLogConfigurator;
 			sourceTree = "<group>";
 		};
@@ -199,7 +186,6 @@
 				4C276B3123142FAAD509AE01AD165D43 /* KFXLog.h */,
 				ED5268E4D8FFBC611D7D1AA1DCA72381 /* KFXLog.m */,
 			);
-			name = KFXLog;
 			path = KFXLog;
 			sourceTree = "<group>";
 		};
@@ -215,18 +201,6 @@
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/KFXLog";
-			sourceTree = "<group>";
-		};
-		243676B7D8779632975A07B64C704CEA /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				E8FC2F0D453A9B2D449D2B6E6012E676 /* KFXLogFileDetailVC.h */,
-				CB05FC707674ED46A315FDAB4E60193D /* KFXLogFileDetailVC.m */,
-				87BBE8290956243B77F5313EF00BC8DE /* KFXLogFilesMasterTVC.h */,
-				66F0389690F5B0967EA09748E0E1F12A /* KFXLogFilesMasterTVC.m */,
-			);
-			name = "View Controllers";
-			path = "KFXLog/Classes/View Controllers";
 			sourceTree = "<group>";
 		};
 		2E9D36FF8E9B5DE5DACFA69EC6549B19 /* Targets Support Files */ = {
@@ -255,8 +229,6 @@
 				7B810D4A3D8C871A58F4BD52F4B41F89 /* Main */,
 				EA011321E721182738E68E1AB9969B76 /* Pod */,
 				1E62CC74287DF22A5171A64E5E7DB183 /* Support Files */,
-				77022BA08EBC91FD80DEFF6136EAD976 /* Table Cells */,
-				243676B7D8779632975A07B64C704CEA /* View Controllers */,
 			);
 			name = KFXLog;
 			path = ../..;
@@ -272,7 +244,6 @@
 				52AE9B69A6B14FBCE57AC6079850BD39 /* KFXFileLogger.h */,
 				FA0B01A43439416E1B4BCF5F5BCD7701 /* KFXFileLogger.m */,
 			);
-			name = "Concrete Loggers";
 			path = "Concrete Loggers";
 			sourceTree = "<group>";
 		};
@@ -284,16 +255,6 @@
 				5A349324DC0E46EB9331EE094D6FA2B8 /* Pods_KFXLog_Tests.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		77022BA08EBC91FD80DEFF6136EAD976 /* Table Cells */ = {
-			isa = PBXGroup;
-			children = (
-				802C961217EEA89D224B3C2A76E2A7A3 /* KFXLogFileTVCell.h */,
-				0AE6B7471DBFE61251B9D68B8BC75EA5 /* KFXLogFileTVCell.m */,
-			);
-			name = "Table Cells";
-			path = "KFXLog/Classes/Table Cells";
 			sourceTree = "<group>";
 		};
 		7772F78B5ED7EC5C64C438326CB8E01B /* Helpers & Constants */ = {
@@ -345,7 +306,6 @@
 				EDBC881493BFD3E75A87A399B0BDED8A /* KFXLogger.m */,
 				8D527C2838676E65CC915E53FF9CA809 /* KFXLogger_Protected.h */,
 			);
-			name = "Abstract Logger";
 			path = "Abstract Logger";
 			sourceTree = "<group>";
 		};
@@ -363,7 +323,6 @@
 				A0957901C1F63B5F3E654867521A4727 /* KFXLoggerInterface.h */,
 				1B00CB46B0A7E68514750CDB9D38167E /* KFXServiceLoggerInterface.h */,
 			);
-			name = "Logger Protocols";
 			path = "Logger Protocols";
 			sourceTree = "<group>";
 		};
@@ -410,7 +369,6 @@
 				55C4CAAE1CB4AC7E074920867A6A47DA /* KFXServiceLogDescriptor.h */,
 				0B621D0D4174D28ECC8923711D35AE26 /* KFXServiceLogDescriptor.m */,
 			);
-			name = "Concrete Log Descriptors";
 			path = "Concrete Log Descriptors";
 			sourceTree = "<group>";
 		};
@@ -460,7 +418,6 @@
 				621DCCDB66A6108726AF42CF7AC958EF /* KFXLogDescriptor.h */,
 				4A41443E6810674658F6E1D5F948611F /* KFXLogDescriptor.m */,
 			);
-			name = "Abstract Log Descriptors";
 			path = "Abstract Log Descriptors";
 			sourceTree = "<group>";
 		};
@@ -500,9 +457,6 @@
 				6154F059266E464B2EAB87E01BB38930 /* KFXLogConfigurator.h in Headers */,
 				DB49B6F19C8A5F12EC595C634B91C851 /* KFXLogConfigurator_Internal.h in Headers */,
 				D67E75C09592284DAEDF054A913E82E6 /* KFXLogDescriptor.h in Headers */,
-				A3670801D63476A85A7335003A21F0F5 /* KFXLogFileDetailVC.h in Headers */,
-				A7D0A9DF8D3D7FB9F739328E0BB880FA /* KFXLogFilesMasterTVC.h in Headers */,
-				8A99E933C6A551DCD05C52B48E6F7905 /* KFXLogFileTVCell.h in Headers */,
 				6F9A520922C440A82E8EC1DAE3154A6D /* KFXLogFormatter.h in Headers */,
 				8EA4351388FEE445AAF906CC044F7052 /* KFXLogger.h in Headers */,
 				479761DB8C59232B6A3711B5C8FC735C /* KFXLogger_Protected.h in Headers */,
@@ -587,6 +541,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
@@ -642,9 +597,6 @@
 				DDF7520CE14017B12987A9D675B67B68 /* KFXLog.m in Sources */,
 				3B1E44738514C2A5ABA32886CD08E9C1 /* KFXLogConfigurator.m in Sources */,
 				B2E94142FDA886C7C60C5F3F0F2E3A09 /* KFXLogDescriptor.m in Sources */,
-				921983B94D1031B72E1AEB01511C8414 /* KFXLogFileDetailVC.m in Sources */,
-				DC7550DECD31A787D6D997870ECA87B9 /* KFXLogFilesMasterTVC.m in Sources */,
-				0E5DB39B84E4EF4518E466A19C873845 /* KFXLogFileTVCell.m in Sources */,
 				7E6A0FD89D75142D24946CA596494710 /* KFXLogFormatter.m in Sources */,
 				01287DC49274DD9F22DCB58898C79C4F /* KFXLogger.m in Sources */,
 				ACD89129CE86002955CC6CA22F5C066D /* KFXOptionsReader.m in Sources */,
@@ -1002,8 +954,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
