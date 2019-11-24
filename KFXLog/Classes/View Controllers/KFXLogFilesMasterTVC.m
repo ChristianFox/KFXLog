@@ -226,7 +226,7 @@
                 }else{
 
                   contents = [contents sortedArrayUsingSelector:@selector(compare:)];
-                  _tableData = contents.reverseObjectEnumerator.allObjects;
+                  _tableData = [contents.reverseObjectEnumerator.allObjects mutableCopy];
                 }
             }
         } else {

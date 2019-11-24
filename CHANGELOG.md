@@ -1,8 +1,10 @@
 
 # Change Log #
 
-## Current
+## v1.6.0 | Improvements to Log Files UI
 - Fixes log files not being displayed in order
+- Fixes search bar underlapping the navigation bar
+- Can now delete log files by swiping on the row. Thanks to: Andrei Ciobanu https://github.com/rhcpfan
 
 ## v1.5.0 | Improved swift support
 - Un-deprecated methods that were previously deprecated in v1.1.0. These were methods that took a string argument but were superseeded by methods that took a format string argument. These methods port nicely to swift so have been re-precated(?).  
