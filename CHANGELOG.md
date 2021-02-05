@@ -1,6 +1,8 @@
 
 # Change Log #
 
+## v2.1.0 |  Update to use newish cocoapods options incremental_installation and generate_multiple_pod_projects. Switches to using cocopods CDN
+
 ## v2.0.1 | Fixes Example project and makes KFXLog available on Apple Watch
 
 ## v2.0.0 | Removes UI classes - they are added to KFXLogUI pod

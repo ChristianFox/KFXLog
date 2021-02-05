@@ -1,0 +1,71 @@
+BUILD_CONFIGURATIONS:
+  Debug: :debug
+  Release: :release
+CACHE_KEYS:
+  KFXLog:
+    BUILD_SETTINGS_CHECKSUM:
+      KFXLog:
+        :debug: fb6a3a68aa1f36eb9dfa0748120dac8e
+        :release: fb6a3a68aa1f36eb9dfa0748120dac8e
+    CHECKSUM: ac198320fe7bb7c42796fed7343236be2e8b4b79
+    FILES:
+      - "../../KFXLog/Classes/Helpers & Constants/KFXLogFormatter.h"
+      - "../../KFXLog/Classes/Helpers & Constants/KFXLogFormatter.m"
+      - "../../KFXLog/Classes/Helpers & Constants/KFXLoggerDefinitions.h"
+      - "../../KFXLog/Classes/Helpers & Constants/KFXOptionsReader.h"
+      - "../../KFXLog/Classes/Helpers & Constants/KFXOptionsReader.m"
+      - "../../KFXLog/Classes/Log Descriptors/Abstract Log Descriptors/KFXFormattedLogDescriptor.h"
+      - "../../KFXLog/Classes/Log Descriptors/Abstract Log Descriptors/KFXFormattedLogDescriptor.m"
+      - "../../KFXLog/Classes/Log Descriptors/Abstract Log Descriptors/KFXLogDescriptor.h"
+      - "../../KFXLog/Classes/Log Descriptors/Abstract Log Descriptors/KFXLogDescriptor.m"
+      - "../../KFXLog/Classes/Log Descriptors/Concrete Log Descriptors/KFXAlertLogDescriptor.h"
+      - "../../KFXLog/Classes/Log Descriptors/Concrete Log Descriptors/KFXAlertLogDescriptor.m"
+      - "../../KFXLog/Classes/Log Descriptors/Concrete Log Descriptors/KFXBasicLogDescriptor.h"
+      - "../../KFXLog/Classes/Log Descriptors/Concrete Log Descriptors/KFXBasicLogDescriptor.m"
+      - "../../KFXLog/Classes/Log Descriptors/Concrete Log Descriptors/KFXCleanLogDescriptor.h"
+      - "../../KFXLog/Classes/Log Descriptors/Concrete Log Descriptors/KFXCleanLogDescriptor.m"
+      - "../../KFXLog/Classes/Log Descriptors/Concrete Log Descriptors/KFXFileLogDescriptor.h"
+      - "../../KFXLog/Classes/Log Descriptors/Concrete Log Descriptors/KFXFileLogDescriptor.m"
+      - "../../KFXLog/Classes/Log Descriptors/Concrete Log Descriptors/KFXServiceLogDescriptor.h"
+      - "../../KFXLog/Classes/Log Descriptors/Concrete Log Descriptors/KFXServiceLogDescriptor.m"
+      - "../../KFXLog/Classes/Loggers/Abstract Logger/KFXLogger.h"
+      - "../../KFXLog/Classes/Loggers/Abstract Logger/KFXLogger.m"
+      - "../../KFXLog/Classes/Loggers/Abstract Logger/KFXLogger_Protected.h"
+      - "../../KFXLog/Classes/Loggers/Concrete Loggers/KFXAlertLogger.h"
+      - "../../KFXLog/Classes/Loggers/Concrete Loggers/KFXAlertLogger.m"
+      - "../../KFXLog/Classes/Loggers/Concrete Loggers/KFXConsoleLogger.h"
+      - "../../KFXLog/Classes/Loggers/Concrete Loggers/KFXConsoleLogger.m"
+      - "../../KFXLog/Classes/Loggers/Concrete Loggers/KFXFileLogger.h"
+      - "../../KFXLog/Classes/Loggers/Concrete Loggers/KFXFileLogger.m"
+      - "../../KFXLog/Classes/Loggers/Logger Protocols/KFXLoggerInterface.h"
+      - "../../KFXLog/Classes/Loggers/Logger Protocols/KFXServiceLoggerInterface.h"
+      - "../../KFXLog/Classes/Main/KFXLog/KFXLog.h"
+      - "../../KFXLog/Classes/Main/KFXLog/KFXLog.m"
+      - "../../KFXLog/Classes/Main/KFXLogConfigurator/KFXLogConfigurator.h"
+      - "../../KFXLog/Classes/Main/KFXLogConfigurator/KFXLogConfigurator.m"
+      - "../../KFXLog/Classes/Main/KFXLogConfigurator/KFXLogConfigurator_Internal.h"
+      - "../../LICENSE"
+      - "../../README.md"
+    PROJECT_NAME: KFXLog
+    SPECS:
+      - KFXLog (2.1.0)
+  KFXLogUI:
+    BUILD_SETTINGS_CHECKSUM:
+      KFXLogUI:
+        :debug: 5de46e96cfede490242f3930ccfef24a
+        :release: 5de46e96cfede490242f3930ccfef24a
+    CHECKSUM: a5162b76826aa6f635f429001ecae72cadb5e68e
+    PROJECT_NAME: KFXLogUI
+    SPECS:
+      - KFXLogUI (0.1.0)
+  Pods-KFXLog_Example:
+    BUILD_SETTINGS_CHECKSUM:
+      Debug: 4b372ebe319ede06db37e93482deb49f
+      Release: 4b372ebe319ede06db37e93482deb49f
+  Pods-KFXLog_Tests:
+    BUILD_SETTINGS_CHECKSUM:
+      Debug: 50b4e54db16d77701d029673578177a0
+      Release: 50b4e54db16d77701d029673578177a0
+OBJECT_VERSION: 46
+PLUGINS:
+  {}
