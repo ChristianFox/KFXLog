@@ -1,9 +1,17 @@
+[![Latest Version](https://img.shields.io/github/v/tag/ChristianFox/KFXLog?sort=semver&label=Version&color=orange)](https://github.com/ChristianFox/KFXLog/)
+[![Platforms](https://img.shields.io/badge/Platforms-iOS-orange)](https://img.shields.io/badge/Platforms-iOS-orange)
+[![Cocoapods](https://img.shields.io/badge/Cocoapods-yes-green)](https://img.shields.io/badge/Cocoapods-yes-green)
+[![Cathage](https://img.shields.io/badge/Cathage-no-red)](https://img.shields.io/badge/Cathage-no-red)
+[![Manually](https://img.shields.io/badge/Manual_Import-yes-green)](https://img.shields.io/badge/Manual_Import-yes-green)
+[![License](https://img.shields.io/badge/license-mit-blue.svg)](https://github.com/ChristianFox/KFXLog/blob/master/LICENSE)
+[![Contribution](https://img.shields.io/badge/Contributions-Welcome-blue)](https://github.com/ChristianFox/KFXLog/labels/contribute)
+[![First Timers Friendly](https://img.shields.io/badge/First_Timers-Welcome-blue)](https://github.com/ChristianFox/KFXLog/labels/contribute)
+[![Size](https://img.shields.io/github/repo-size/ChristianFox/KFXLog?color=orange)](https://img.shields.io/github/repo-size/ChristianFox/KFXLog?color=orange)
+[![Files](https://img.shields.io/github/directory-file-count/ChristianFox/KFXLog?color=orange)](https://img.shields.io/github/directory-file-count/ChristianFox/KFXLog?color=orange)
+
+# WARNING - This project has not been updated in a while and will be deprecated at some point in the future
+
 # KFXLog
-
-
-[![Version](https://img.shields.io/cocoapods/v/KFXLog.svg?style=flat)](http://cocoapods.org/pods/KFXLog)
-[![License](https://img.shields.io/cocoapods/l/KFXLog.svg?style=flat)](http://cocoapods.org/pods/KFXLog)
-[![Platform](https://img.shields.io/cocoapods/p/KFXLog.svg?style=flat)](http://cocoapods.org/pods/KFXLog)
 
 ## Example
 To run the example project, clone the repo, run the app and push some buttons.
